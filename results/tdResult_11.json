@@ -1,0 +1,42 @@
+{
+    "success": true,
+    "taskData": {
+        "taskdataID": 11,
+        "modeldata": {
+            "KaNCD": [
+                {
+                    "TaskType": "CognitiveDiagnosis",
+                    "foldID": 1,
+                    "auc": 0.9156649514337063,
+                    "acc": 0.8456156716417911,
+                    "rmse": 0.3380032390292566
+                }
+            ],
+            "IRT": [
+                {
+                    "TaskType": "CognitiveDiagnosis",
+                    "foldID": 1,
+                    "auc": 0.9104839363680836,
+                    "acc": 0.8316231343283582,
+                    "rmse": 0.3451849183920723
+                },
+                {
+                    "TaskType": "CognitiveDiagnosis",
+                    "foldID": 5,
+                    "auc": 0.9104839363680836,
+                    "acc": 0.8316231343283582,
+                    "rmse": 0.3451849183920723
+                }
+            ],
+            "NCDM": [
+                {
+                    "TaskType": "CognitiveDiagnosis",
+                    "foldID": 1,
+                    "auc": 0.9120504925517732,
+                    "acc": 0.8470149253731343,
+                    "rmse": 0.3516127020702156
+                }
+            ]
+        }
+    }
+}

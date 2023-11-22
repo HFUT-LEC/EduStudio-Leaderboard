@@ -1,0 +1,65 @@
+{
+    "success": true,
+    "data": [
+        {
+            "id": 1,
+            "model": "IRT",
+            "auc-1": 0.75, 
+            "rmse-1": 0.45, 
+            "acc-1": 0.25, 
+            "auc-5": 0.25, 
+            "rmse-5": 0.25, 
+            "acc-5": 0.25,
+            "logurl-1":"https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-11-17-173631/2023-11-17-173631.log",
+            "logurl-5":"https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-11-17-173631/2023-11-17-173631.log"
+        },
+        {
+            "id": 2,
+            "model": "NCDM", 
+            "auc-1": 0.75, 
+            "rmse-1": 0.45, 
+            "acc-1": 0.25, 
+            "auc-5": 0.25, 
+            "rmse-5": 0.25, 
+            "acc-5": 0.25,
+            "logurl-1":"https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-11-17-173631/2023-11-17-173631.log",
+            "logurl-5":"https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-11-17-173631/2023-11-17-173631.log"
+        },
+        {
+            "id": 3,
+            "model": "KaNCD", 
+            "auc-1": 0.75, 
+            "rmse-1": 0.45, 
+            "acc-1": 0.25, 
+            "auc-5": 0.25, 
+            "rmse-5": 0.25, 
+            "acc-5": 0.25,
+            "logurl-1":"https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-11-17-173631/2023-11-17-173631.log",
+            "logurl-5":"https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-11-17-173631/2023-11-17-173631.log"
+        },
+        {
+            "id": 4,
+            "model": "KSCD", 
+            "auc-1": 0.75, 
+            "rmse-1": 0.45, 
+            "acc-1": 0.25, 
+            "auc-5": 0.25, 
+            "rmse-5": 0.25, 
+            "acc-5": 0.25,
+            "logurl-1":"https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-11-17-173631/2023-11-17-173631.log",
+            "logurl-5":"https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-11-17-173631/2023-11-17-173631.log"
+        },
+        {
+            "id": 5,
+            "model": "RCD", 
+            "auc-1": 0.75, 
+            "rmse-1": 0.45, 
+            "acc-1": 0.25, 
+            "auc-5": 0.25, 
+            "rmse-5": 0.25, 
+            "acc-5": 0.25,
+            "logurl-1":"https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-11-17-173631/2023-11-17-173631.log",
+            "logurl-5":"https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-11-17-173631/2023-11-17-173631.log"
+        }
+    ]
+}

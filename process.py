@@ -109,7 +109,7 @@ def log2json():
         outdir = f"./results/{jskey}.json"
         with open(outdir, 'w') as f:
             json.dump(item, f)
-
+    print("2334")
 
 if __name__  == "__main__":
     log2json()

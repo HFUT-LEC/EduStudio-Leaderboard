@@ -68,7 +68,7 @@ def log2json():
                 result[resultStore]["data"].append(tmp_dict)
         else:
             result[resultStore] = {
-                "success": "true",
+                "success": True,
                 "task": taskName,
                 "dataset": dataset,
                 "application": applicationName,
@@ -103,11 +103,12 @@ def log2json():
                     result[resultStore]["data"][idx]['rmse-5'] = rmse
                     result[resultStore]["data"][idx]['acc-5'] = acc
                     result[resultStore]["data"][idx]['logurl-5'] = logurl
-    print(result)
     
-    # 将dict转换为json文件
-    # with open('./results/tdResult_11.json', 'w') as f:
-    #     json.dump(tdResult_11, f)
+    # 将result中不同的json进行存储
+    for jskey, item in result.items():
+        outdir = f"./results/{jskey}.json"
+        with open(outdir, 'w') as f:
+            json.dump(item, f)
 
 
 if __name__  == "__main__":

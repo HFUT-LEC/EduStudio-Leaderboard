@@ -1,44 +1,45 @@
 {
     "success": true,
     "task": "CognitiveDiagnosis",
-    "dataset":"ASSISTment0910",
+    "dataset": "ASSIST_0910",
     "application": "General",
+    "num": 3,
     "data": [
         {
             "id": 1,
-            "model": "CDGK",
-            "auc-1": 0.7626, 
-            "rmse-1": 0.4284, 
-            "acc-1": 0.7283, 
-            "auc-5": 0, 
-            "rmse-5": 0, 
+            "model": "DINA",
+            "auc-1": 0.7161,
+            "rmse-1": 0.478,
+            "acc-1": 0.6719,
+            "auc-5": 0,
+            "rmse-5": 0,
             "acc-5": 0,
-            "logurl-1":"https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-11-17-163401/2023-11-17-163401.log",
-            "logurl-5":""
+            "logurl-1": "https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-11-17-192712/2023-11-17-192712.log",
+            "logurl-5": ""
         },
         {
             "id": 2,
-            "model": "CDMFKC", 
-            "auc-1": 0.7405, 
-            "rmse-1": 0.4485, 
-            "acc-1": 0.7108, 
-            "auc-5": 0, 
-            "rmse-5": 0, 
+            "model": "CDMFKC",
+            "auc-1": 0.7406,
+            "rmse-1": 0.4486,
+            "acc-1": 0.7109,
+            "auc-5": 0,
+            "rmse-5": 0,
             "acc-5": 0,
-            "logurl-1":"https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-11-17-173631/2023-11-17-173631.log",
-            "logurl-5":""
+            "logurl-1": "https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-11-17-173631/2023-11-17-173631.log",
+            "logurl-5": ""
         },
         {
             "id": 3,
-            "model": "DINA", 
-            "auc-1": 0.7160, 
-            "rmse-1": 0.4780, 
-            "acc-1": 0.6719, 
-            "auc-5": 0, 
-            "rmse-5": 0, 
+            "model": "CDGK_MULTI",
+            "auc-1": 0.7627,
+            "rmse-1": 0.4284,
+            "acc-1": 0.7284,
+            "auc-5": 0,
+            "rmse-5": 0,
             "acc-5": 0,
-            "logurl-1":"https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-11-17-192712/2023-11-17-192712.log",
-            "logurl-5":""
+            "logurl-1": "https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-11-17-163401/2023-11-17-163401.log",
+            "logurl-5": ""
         }
     ]
 }

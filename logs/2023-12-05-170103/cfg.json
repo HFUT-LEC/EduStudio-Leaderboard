@@ -1,0 +1,108 @@
+{
+    "traintpl_cfg": {
+        "cls": "EduTrainTPL",
+        "num_stop_rounds": 10,
+        "early_stop_metrics": [
+            [
+                "auc",
+                "max"
+            ]
+        ],
+        "best_epoch_metric": "auc",
+        "unsave_best_epoch_pth": true,
+        "ignore_metrics_in_train": [],
+        "batch_size": 32,
+        "device": "cpu",
+        "epoch_num": 1000,
+        "eval_batch_size": 2048,
+        "num_workers": 0,
+        "lr": 0.001,
+        "optim": "adam",
+        "eps": 1e-08,
+        "weight_decay": 0.0,
+        "seed": 2023
+    },
+    "datatpl_cfg": {
+        "cls": "CDInterExtendsQDataTPL",
+        "mid2cache_op_seq": [
+            "M2C_Label2Int",
+            "M2C_FilterRecords4CD",
+            "M2C_ReMapId",
+            "M2C_RandomDataSplit4CD",
+            "M2C_GenQMat"
+        ],
+        "exer_exclude_feat_names": [],
+        "stu_exclude_feat_names": [],
+        "seperator": ",",
+        "n_folds": 5,
+        "is_dataset_divided": false,
+        "is_save_cache": false,
+        "cache_id": "cache_default",
+        "load_data_from": "middata",
+        "inter_exclude_feat_names": [],
+        "raw2mid_op": null,
+        "seed": 2023,
+        "M2C_Label2Int": {},
+        "M2C_FilterRecords4CD": {
+            "stu_least_records": 10,
+            "exer_least_records": 0
+        },
+        "M2C_ReMapId": {
+            "share_id_columns": [],
+            "ignore_columns": "{'order_id:token'}"
+        },
+        "M2C_RandomDataSplit4CD": {
+            "seed": 2023,
+            "divide_scale_list": [
+                7,
+                1,
+                2
+            ]
+        },
+        "M2C_GenQMat": {}
+    },
+    "modeltpl_cfg": {
+        "cls": "CDMFKC",
+        "dnn_units": [
+            512,
+            256
+        ],
+        "dropout_rate": 0.5,
+        "activation": "sigmoid",
+        "g_impact_a": 0.5,
+        "g_impact_b": 0.5,
+        "param_init_type": "xavier_normal",
+        "pretrained_file_path": ""
+    },
+    "evaltpl_cfg": {
+        "clses": [
+            "BinaryClassificationEvalTPL"
+        ],
+        "BinaryClassificationEvalTPL": {
+            "use_metrics": [
+                "auc",
+                "acc",
+                "rmse"
+            ]
+        }
+    },
+    "frame_cfg": {
+        "ARCHIVE_FOLDER_PATH": "/home/u2022171244/EduStudio-main/examples/single_model/archive",
+        "CFG_FOLDER_PATH": "/home/u2022171244/EduStudio-main/examples/single_model/conf",
+        "DATA_FOLDER_PATH": "/home/u2022171244/EduStudio-main/examples/single_model/data",
+        "DISABLE_LOG_STDOUT": false,
+        "DISABLE_TQDM_BAR": false,
+        "DT_INFO_DICT": {},
+        "DT_INFO_FILE_PATH": "/home/u2022171244/EduStudio-main/edustudio/assets/datasets.yaml",
+        "ID": "2023-12-05-170103",
+        "LOG_WITHOUT_DATE": false,
+        "TEMP_FOLDER_PATH": "/home/u2022171244/EduStudio-main/examples/single_model/temp",
+        "TQDM_NCOLS": 100,
+        "WORK_DIR": "/home/u2022171244/EduStudio-main/examples/single_model",
+        "data_folder_path": "/home/u2022171244/EduStudio-main/examples/single_model/data/FrcSub",
+        "temp_folder_path": "/home/u2022171244/EduStudio-main/examples/single_model/temp/FrcSub/EduTrainTPL/CDMFKC/2023-12-05-170103",
+        "archive_folder_path": "/home/u2022171244/EduStudio-main/examples/single_model/archive/FrcSub/EduTrainTPL/CDMFKC"
+    },
+    "dataset": "FrcSub",
+    "logger": "<Logger edustudio (DEBUG)>"
+}

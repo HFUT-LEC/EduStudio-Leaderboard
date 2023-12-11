@@ -1,65 +1,45 @@
 {
     "success": true,
+    "task": "CognitiveDiagnosis",
+    "dataset": "FrcSub",
+    "application": "General",
+    "num": 3,
     "data": [
         {
             "id": 1,
-            "model": "IRT",
-            "auc-1": 0.74, 
-            "rmse-1": 0.45, 
-            "acc-1": 0.25, 
-            "auc-5": 0.25, 
-            "rmse-5": 0.25, 
-            "acc-5": 0.25,
-            "logurl-1":"https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-11-17-173631/2023-11-17-173631.log",
-            "logurl-5":"https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-11-17-173631/2023-11-17-173631.log"
+            "model": "DINA",
+            "auc-1": 0.8495,
+            "rmse-1": 0.4068,
+            "acc-1": 0.7607,
+            "auc-5": 0.8517,
+            "rmse-5": 0.4063,
+            "acc-5": 0.7662,
+            "logurl-1": "https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-12-05-172202/2023-12-05-172202.log",
+            "logurl-5": "https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-12-05-171848/2023-12-05-171848.log"
         },
         {
             "id": 2,
-            "model": "NCDM", 
-            "auc-1": 0.73, 
-            "rmse-1": 0.45, 
-            "acc-1": 0.25, 
-            "auc-5": 0.25, 
-            "rmse-5": 0.25, 
-            "acc-5": 0.25,
-            "logurl-1":"https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-11-17-173631/2023-11-17-173631.log",
-            "logurl-5":"https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-11-17-173631/2023-11-17-173631.log"
+            "model": "CDGK_MULTI",
+            "auc-1": 0.869,
+            "rmse-1": 0.4094,
+            "acc-1": 0.7808,
+            "auc-5": 0.8688,
+            "rmse-5": 0.4196,
+            "acc-5": 0.7949,
+            "logurl-1": "https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-12-05-171743/2023-12-05-171743.log",
+            "logurl-5": "https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-12-05-171335/2023-12-05-171335.log"
         },
         {
             "id": 3,
-            "model": "KaNCD", 
-            "auc-1": 0.72, 
-            "rmse-1": 0.45, 
-            "acc-1": 0.25, 
-            "auc-5": 0.25, 
-            "rmse-5": 0.25, 
-            "acc-5": 0.25,
-            "logurl-1":"https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-11-17-173631/2023-11-17-173631.log",
-            "logurl-5":"https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-11-17-173631/2023-11-17-173631.log"
-        },
-        {
-            "id": 4,
-            "model": "KSCD", 
-            "auc-1": 0.71, 
-            "rmse-1": 0.45, 
-            "acc-1": 0.25, 
-            "auc-5": 0.25, 
-            "rmse-5": 0.25, 
-            "acc-5": 0.25,
-            "logurl-1":"https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-11-17-173631/2023-11-17-173631.log",
-            "logurl-5":"https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-11-17-173631/2023-11-17-173631.log"
-        },
-        {
-            "id": 5,
-            "model": "RCD", 
-            "auc-1": 0.70, 
-            "rmse-1": 0.45, 
-            "acc-1": 0.25, 
-            "auc-5": 0.25, 
-            "rmse-5": 0.25, 
-            "acc-5": 0.25,
-            "logurl-1":"https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-11-17-173631/2023-11-17-173631.log",
-            "logurl-5":"https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-11-17-173631/2023-11-17-173631.log"
+            "model": "CDMFKC",
+            "auc-1": 0.9158,
+            "rmse-1": 0.3376,
+            "acc-1": 0.8461,
+            "auc-5": 0.9044,
+            "rmse-5": 0.3506,
+            "acc-5": 0.8365,
+            "logurl-1": "https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-12-05-165453/2023-12-05-165453.log",
+            "logurl-5": "https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-12-05-170103/2023-12-05-170103.log"
         }
     ]
 }

@@ -3,6 +3,7 @@ import re
 import sys
 import json
 from decimal import Decimal
+from datetime import datetime
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../")
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
@@ -12,19 +13,23 @@ def log2json():
     # 提取所有模型的日志文件
     logInfos_path, cfgInfos_path = [], []
     for dir in os.listdir(log_dir):
-        if dir == "README.md": break
+        if dir == "README.md": continue
         dir_path = f"{log_dir}/{dir}/"
         logInfos_path.append(os.path.join(dir_path, f"{dir}.log"))
         cfgInfos_path.append(os.path.join(dir_path, f"cfg.json"))
     
-    result = {}
+    # 对提取的日志文件进行降序操作
+    sortedPath_ = sorted(zip(logInfos_path, cfgInfos_path), key=lambda x: datetime.strptime(x[0].split('/')[-2], '%Y-%m-%d-%H%M%S'), reverse=True)
+    logInfos_path, cfgInfos_path = zip(*sortedPath_)
+
+    result = {}  # 存放不同的json文件, 其中key为分类名, value中是该分类对应的结果
     taskInfo = {
-        'CDModels': ['IRT', 'MIRT', 'DINA', 'NCDM', 'CNCD_Q', 'IRR', 'ECD', 'RCD', 'MGCD', 'CNCD_F', 'KaNCD', 'HierCDF', 'KSCD', 'CDMFKC', 'CDGK_MULTI'], 
-        'KTModels': ['DKT', 'DKT+', 'DKT_DSC']
+        'CDModels': [ 'DINA', 'CDMFKC', 'CDGK_MULTI'], 
+        'KTModels': ['DKT', 'DKT_plus', 'DKTDSC']
         }
-    datasetInfo = {'ASSIST_0910': 2}
+    datasetInfo = {'FrcSub': 1, 'ASSIST_0910': 2}
     applicationInfo = {
-        'GeneralModels': ['DINA', 'CDMFKC', 'CDGK_MULTI']
+        'GeneralModels': ['DINA', 'CDMFKC', 'CDGK_MULTI', 'DKT', 'DKT_plus', 'DKTDSC']
     }
     # 从日志和配置信息中获取"数据集和模型"信息:
     for logdir, cfgdir in zip(logInfos_path, cfgInfos_path):
@@ -63,7 +68,7 @@ def log2json():
                 if model in data_dict.values(): modelExistCheck = True
             if not modelExistCheck:  # 说明此时json文件中未增加该model
                 curid = result[resultStore]["num"]
-                result[resultStore]["num"] = curid + 1
+                result[resultStore]["num"] = curid + 1  # 模型数量+1
                 tmp_dict = {"id": curid + 1, "model": model, "auc-1": 0, "rmse-1": 0, "acc-1": 0, "auc-5": 0, "rmse-5": 0, "acc-5": 0, "logurl-1": "", "logurl-5":""}
                 result[resultStore]["data"].append(tmp_dict)
         else:

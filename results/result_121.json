@@ -11,11 +11,11 @@
             "auc-1": 0.7161,
             "rmse-1": 0.478,
             "acc-1": 0.6719,
-            "auc-5": 0,
-            "rmse-5": 0,
-            "acc-5": 0,
+            "auc-5": 0.7261,
+            "rmse-5": 0.4748,
+            "acc-5": 0.6795,
             "logurl-1": "https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-11-17-192712/2023-11-17-192712.log",
-            "logurl-5": ""
+            "logurl-5": "https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-12-04-194140/2023-12-04-194140.log"
         },
         {
             "id": 2,
@@ -23,11 +23,11 @@
             "auc-1": 0.7406,
             "rmse-1": 0.4486,
             "acc-1": 0.7109,
-            "auc-5": 0,
-            "rmse-5": 0,
-            "acc-5": 0,
+            "auc-5": 0.7452,
+            "rmse-5": 0.4402,
+            "acc-5": 0.7074,
             "logurl-1": "https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-11-17-173631/2023-11-17-173631.log",
-            "logurl-5": ""
+            "logurl-5": "https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-12-04-114848/2023-12-04-114848.log"
         },
         {
             "id": 3,
@@ -35,11 +35,11 @@
             "auc-1": 0.7627,
             "rmse-1": 0.4284,
             "acc-1": 0.7284,
-            "auc-5": 0,
-            "rmse-5": 0,
-            "acc-5": 0,
+            "auc-5": 0.7671,
+            "rmse-5": 0.4257,
+            "acc-5": 0.7325,
             "logurl-1": "https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-11-17-163401/2023-11-17-163401.log",
-            "logurl-5": ""
+            "logurl-5": "https://github.com/Chuckie-XC1028/EduStudioData/blob/main/logs/2023-12-04-112043/2023-12-04-112043.log"
         }
     ]
 }

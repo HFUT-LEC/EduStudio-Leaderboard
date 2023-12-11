@@ -42,7 +42,7 @@ export default {
     });
     const dataInfo = reactive({
       is_showed: false,
-      model_icon_is_showed: false,
+      model_icon_is_showed: true,
       models: [
         {
           id: 1,

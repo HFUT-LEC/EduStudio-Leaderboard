@@ -121,6 +121,7 @@ export default {
       let optResultPath = 'https://raw.githubusercontent.com/Chuckie-XC1028/EduStudioData/main/results/result_' + optResult.value.toString() + '.json';
       const dt = await $.getJSON(optResultPath);  // 利用asunc和await实现响应等待操作：后续的代码执行会等待回调函数$.getJSON()执行完成
       // console.log(dt);
+      dataInfo.model_icon_is_showed = true;  // 设置重置数据类时, Model列自动展开
       dataInfo.models = dt.data.map(item => ({ id: item.id, model: item.model }));
       dataInfo.data_source = dt.data;
       // 设置初始模型选择的状态

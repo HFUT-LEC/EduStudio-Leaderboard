@@ -40,26 +40,23 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col-2">Dataset:</div>
-                    <div class="col-10">
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="datasetRadio" id="datasetRadio1" value="FrcSub"
+                    <div class="col-10" v-if="selectedTask == 'CognitiveDiagnosis'">
+                      <div class="form-check form-check-inline" v-for="datset in dataset_show.CognitiveDiagnosis"
+                        :key="datset">
+                        <input class="form-check-input" type="radio" name="datasetRadio" :id=datset :value=datset
                           v-model="selectedDataset" />
-                        <label class="form-check-label" for="datasetRadio1">
-                          FrcSub
+                        <label class="form-check-label" :for=datset>
+                          {{ datset }}
                         </label>
                       </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="datasetRadio" id="datasetRadio2"
-                          value="ASSISTment0910" v-model="selectedDataset" />
-                        <label class="form-check-label" for="datasetRadio2">
-                          ASSISTment0910
-                        </label>
-                      </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="datasetRadio" id="datasetRadio3" value="Junyi"
+                    </div>
+                    <div class="col-10" v-if="selectedTask == 'KnowledgeTracing'">
+                      <div class="form-check form-check-inline" v-for="datset in dataset_show.KnowledgeTracing"
+                        :key="datset">
+                        <input class="form-check-input" type="radio" name="datasetRadio" :id=datset :value=datset
                           v-model="selectedDataset" />
-                        <label class="form-check-label" for="datasetRadio3">
-                          Junyi
+                        <label class="form-check-label" :for=datset>
+                          {{ datset }}
                         </label>
                       </div>
                     </div>
@@ -70,19 +67,23 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col-2">Application:</div>
-                    <div class="col-10">
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="applyRadio" id="applyRadio1" value="General"
+                    <div class="col-10" v-if="selectedTask == 'CognitiveDiagnosis'">
+                      <div class="form-check form-check-inline" v-for="apply in application_show.CognitiveDiagnosis"
+                        :key="apply">
+                        <input class="form-check-input" type="radio" name="applyRadio" :id=apply :value=apply
                           v-model="selectedApplication" />
-                        <label class="form-check-label" for="applyRadio1">
-                          General
+                        <label class="form-check-label" :for=apply>
+                          {{ apply }}
                         </label>
                       </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="applyRadio" id="applyRadio2"
-                          value="KnowledgeMissing" v-model="selectedApplication" />
-                        <label class="form-check-label" for="applyRadio1">
-                          KnowledgeMissing
+                    </div>
+                    <div class="col-10" v-if="selectedTask == 'KnowledgeTracing'">
+                      <div class="form-check form-check-inline" v-for="apply in application_show.KnowledgeTracing"
+                        :key="apply">
+                        <input class="form-check-input" type="radio" name="applyRadio" :id=apply :value=apply
+                          v-model="selectedApplication" />
+                        <label class="form-check-label" :for=apply>
+                          {{ apply }}
                         </label>
                       </div>
                     </div>
@@ -115,7 +116,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { reactive, ref } from "vue";
 
 export default {
   name: "LeaderBoardSelect",
@@ -126,18 +127,31 @@ export default {
     },
   },
   setup(props, context) {
-    let selectedTask = ref("");
+    let selectedTask = ref("CognitiveDiagnosis");
     let selectedDataset = ref("");
     let selectedApplication = ref("");
+    // 维护: 依据任务需求在此处进行数据集重选择
+    const dataset_show = reactive({
+      CognitiveDiagnosis: ['FrcSub', 'ASSISTment0910'],
+      KnowledgeTracing: ['ASSISTment0910']
+    })
+    // 维护: 依据任务需求在此处进行应用场景选择, 如General、KnowledgeMissing
+    const application_show = reactive({
+      CognitiveDiagnosis: ['General',],
+      KnowledgeTracing: ['General',]
+    })
 
     const refresh = () => {
       context.emit("refresh", selectedTask.value, selectedDataset.value, selectedApplication.value);
+      console.log(selectedTask.value);
     };
 
     return {
       selectedTask,
       selectedDataset,
       selectedApplication,
+      dataset_show,
+      application_show,
       refresh,
     };
   },

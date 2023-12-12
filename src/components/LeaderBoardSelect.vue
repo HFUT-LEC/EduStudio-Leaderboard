@@ -116,7 +116,7 @@
 </template>
 
 <script>
-import { reactive, ref } from "vue";
+import { reactive, ref, watch } from "vue";
 
 export default {
   name: "LeaderBoardSelect",
@@ -134,16 +134,27 @@ export default {
     const dataset_show = reactive({
       CognitiveDiagnosis: ['FrcSub', 'ASSISTment0910'],
       KnowledgeTracing: ['ASSISTment0910']
-    })
+    });
     // 维护: 依据任务需求在此处进行应用场景选择, 如General、KnowledgeMissing
     const application_show = reactive({
       CognitiveDiagnosis: ['General',],
       KnowledgeTracing: ['General',]
-    })
+    });
+    // 监听器, 监听selectedTask的变化, 且在回调函数中根据selectedTask的值来更新selectedDataset和selectedApplication的值
+    watch(selectedTask, (newValue) => {
+      if (newValue == "CognitiveDiagnosis") {
+        selectedDataset.value = "";
+        selectedApplication.value = "";
+      }
+      else if (newValue == "KnowledgeTracing") {
+        selectedDataset.value = "";
+        selectedApplication.value = "";
+      }
+    });
 
     const refresh = () => {
       context.emit("refresh", selectedTask.value, selectedDataset.value, selectedApplication.value);
-      console.log(selectedTask.value);
+      // console.log(selectedTask.value);
     };
 
     return {

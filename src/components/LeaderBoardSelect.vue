@@ -154,7 +154,6 @@ export default {
 
     const refresh = () => {
       context.emit("refresh", selectedTask.value, selectedDataset.value, selectedApplication.value);
-      // console.log(selectedTask.value);
     };
 
     return {

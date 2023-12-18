@@ -27,20 +27,17 @@ def log2json():
 
     result = {}  # 存放不同的json文件, 其中key为分类名, value中是该分类对应的结果
     taskInfo = {
-        'CDModels': ['NCDM', 'MIRT', 'NCDM', 'KSCD', 'KSCD', 'KaNCD', 'KaNCD', 'IRT', 'NCDM', 'MGCD', 'KSCD', 'IRT',
-                     'KaNCD', 'DINA', 'DINA', 'CDGK_MULTI', 'CDGK_MULTI', 'CDMFKC', 'CDMFKC', 'DINA', 'CDMFKC',
-                     'CDGK_MULTI', 'NCDM', 'MIRT', 'KSCD', 'KaNCD', 'DINA', 'CDMFKC', 'CDGK_MULTI'],
-        'KTModels': ['SKVMN', 'SimpleKT', 'SAKT', 'SAINT_plus', 'SAINT', 'RKT', 'QIKT', 'LPKT_S', 'LPKT', 'KQN', 'IEKT',
-                     'HawkesKT', 'DKTDSC', 'DKT_plus', 'DKT']
+        'CDModels': ['KaNCD', 'CDMFKC', 'DINA', 'MGCD', 'NCDM', 'CDGK_MULTI', 'MIRT', 'KSCD', 'IRT'],
+        'KTModels': ['DKT_plus', 'SAKT', 'LPKT', 'SKVMN', 'LPKT_S', 'KQN', 'DKTDSC', 'DKT', 'RKT', 'IEKT', 'SAINT_plus',
+                     'HawkesKT', 'QIKT', 'SAINT', 'SimpleKT']
     }
     datasetInfo = {'FrcSub': 1, 'ASSIST_0910': 2}
     applicationInfo = {
         # 有待确认
-        'GeneralModels': ['SKVMN', 'SimpleKT', 'SAKT', 'SAINT_plus', 'SAINT', 'RKT', 'QIKT', 'LPKT_S', 'LPKT', 'KQN',
-                          'IEKT', 'HawkesKT', 'NCDM', 'MIRT', 'NCDM', 'KSCD', 'KSCD', 'KaNCD', 'KaNCD', 'IRT', 'NCDM',
-                          'MGCD', 'KSCD', 'IRT', 'KaNCD', 'DINA', 'DINA', 'CDGK_MULTI', 'CDGK_MULTI', 'CDMFKC',
-                          'CDMFKC', 'DKTDSC', 'DKT_plus', 'DKT', 'DINA', 'CDMFKC', 'CDGK_MULTI', 'NCDM', 'MIRT', 'KSCD',
-                          'KaNCD', 'DINA', 'CDMFKC', 'CDGK_MULTI']
+        'GeneralModels': ['KaNCD', 'CDMFKC', 'DINA', 'MGCD', 'NCDM', 'CDGK_MULTI', 'MIRT', 'KSCD', 'IRT',
+                          'DKT_plus', 'SAKT', 'LPKT', 'SKVMN', 'LPKT_S', 'KQN', 'DKTDSC', 'DKT', 'RKT', 'IEKT',
+                          'SAINT_plus', 'HawkesKT', 'QIKT', 'SAINT', 'SimpleKT'
+                          ]
     }
     # 从日志和配置信息中获取"数据集和模型"信息:
     for logdir, cfgdir in zip(logInfos_path, cfgInfos_path):

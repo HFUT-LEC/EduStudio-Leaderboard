@@ -1,0 +1,355 @@
+2023-12-12 14:42:44[INFO]: ============================================================
+2023-12-12 14:42:44[INFO]: [ID]: 2023-12-12-144240
+2023-12-12 14:42:44[INFO]: [DATASET]: ASSIST_0910
+2023-12-12 14:42:44[INFO]: [ARGV]: ['kscd.py']
+2023-12-12 14:42:44[INFO]: [ALL_CFG]: 
+{
+    "traintpl_cfg": {
+        "cls": "EduTrainTPL",
+        "num_stop_rounds": 10,
+        "early_stop_metrics": [
+            [
+                "auc",
+                "max"
+            ]
+        ],
+        "best_epoch_metric": "auc",
+        "unsave_best_epoch_pth": true,
+        "ignore_metrics_in_train": [],
+        "batch_size": 32,
+        "device": "cuda:0",
+        "epoch_num": 100,
+        "eval_batch_size": 2048,
+        "num_workers": 0,
+        "lr": 0.001,
+        "optim": "adam",
+        "eps": 1e-08,
+        "weight_decay": 0.0,
+        "seed": 2023
+    },
+    "datatpl_cfg": {
+        "cls": "CDInterExtendsQDataTPL",
+        "mid2cache_op_seq": [
+            "M2C_Label2Int",
+            "M2C_FilterRecords4CD",
+            "M2C_ReMapId",
+            "M2C_RandomDataSplit4CD",
+            "M2C_GenQMat"
+        ],
+        "exer_exclude_feat_names": [],
+        "stu_exclude_feat_names": [],
+        "seperator": ",",
+        "n_folds": 5,
+        "is_dataset_divided": false,
+        "is_save_cache": false,
+        "cache_id": "cache_default",
+        "load_data_from": "middata",
+        "inter_exclude_feat_names": [],
+        "raw2mid_op": null,
+        "seed": 2023,
+        "M2C_Label2Int": {},
+        "M2C_FilterRecords4CD": {
+            "stu_least_records": 10,
+            "exer_least_records": 0
+        },
+        "M2C_ReMapId": {
+            "share_id_columns": [],
+            "ignore_columns": "{'order_id:token'}"
+        },
+        "M2C_RandomDataSplit4CD": {
+            "seed": 2023,
+            "divide_scale_list": [
+                7,
+                1,
+                2
+            ]
+        },
+        "M2C_GenQMat": {}
+    },
+    "modeltpl_cfg": {
+        "cls": "KSCD",
+        "emb_dim": 20,
+        "dropout_rate": 0.5,
+        "interaction_type": "kscd",
+        "interaction_type_ncdm": {
+            "dnn_units": [
+                512,
+                256
+            ],
+            "dropout_rate": 0.5,
+            "activation": "sigmoid",
+            "disc_scale": 10
+        },
+        "interaction_type_kscd": {
+            "dropout_rate": 0.0
+        },
+        "param_init_type": "xavier_normal",
+        "pretrained_file_path": ""
+    },
+    "evaltpl_cfg": {
+        "clses": [
+            "BinaryClassificationEvalTPL"
+        ],
+        "BinaryClassificationEvalTPL": {
+            "use_metrics": [
+                "auc",
+                "acc",
+                "rmse"
+            ]
+        }
+    },
+    "frame_cfg": {
+        "ARCHIVE_FOLDER_PATH": "/lijinglong/Projects/EduStudio-main/examples/archive",
+        "CFG_FOLDER_PATH": "/lijinglong/Projects/EduStudio-main/examples/conf",
+        "DATA_FOLDER_PATH": "/lijinglong/Projects/EduStudio-main/examples/data",
+        "DISABLE_LOG_STDOUT": false,
+        "DISABLE_TQDM_BAR": false,
+        "DT_INFO_DICT": {},
+        "DT_INFO_FILE_PATH": "/lijinglong/Projects/EduStudio-main/edustudio/assets/datasets.yaml",
+        "ID": "2023-12-12-144240",
+        "LOG_WITHOUT_DATE": false,
+        "TEMP_FOLDER_PATH": "/lijinglong/Projects/EduStudio-main/examples/temp",
+        "TQDM_NCOLS": 100,
+        "WORK_DIR": "/lijinglong/Projects/EduStudio-main/examples",
+        "data_folder_path": "/lijinglong/Projects/EduStudio-main/examples/data/ASSIST_0910",
+        "temp_folder_path": "/lijinglong/Projects/EduStudio-main/examples/temp/ASSIST_0910/EduTrainTPL/KSCD/2023-12-12-144240",
+        "archive_folder_path": "/lijinglong/Projects/EduStudio-main/examples/archive/ASSIST_0910/EduTrainTPL/KSCD"
+    },
+    "dataset": "ASSIST_0910",
+    "logger": "<Logger edustudio (DEBUG)>"
+}
+2023-12-12 14:42:44[INFO]: ============================================================
+2023-12-12 14:42:52[INFO]: {'stu_count': 2993, 'exer_count': 16936, 'cpt_count': 122}
+2023-12-12 14:42:52[INFO]: TrainTPL <class 'edustudio.traintpl.edu_traintpl.EduTrainTPL'> Started!
+2023-12-12 14:42:54[INFO]: ====== [FOLD ID]: 0 ======
+2023-12-12 14:42:54[INFO]: [CALLBACK]-ModelCheckPoint has been registered!
+2023-12-12 14:42:54[INFO]: [CALLBACK]-EarlyStopping has been registered!
+2023-12-12 14:42:54[INFO]: [CALLBACK]-History has been registered!
+2023-12-12 14:42:54[INFO]: [CALLBACK]-BaseLogger has been registered!
+2023-12-12 14:42:54[INFO]: Start Training...
+2023-12-12 14:43:59[INFO]: Update best epoch as [1] for auc!
+2023-12-12 14:43:59[INFO]: [EPOCH=001]: loss_main: 0.5707
+2023-12-12 14:43:59[INFO]: [EPOCH=001]: auc: 0.7606 | acc: 0.7220 | rmse: 0.4296
+2023-12-12 14:45:01[INFO]: Update best epoch as [2] for auc!
+2023-12-12 14:45:01[INFO]: [EPOCH=002]: loss_main: 0.5153
+2023-12-12 14:45:01[INFO]: [EPOCH=002]: auc: 0.7652 | acc: 0.7221 | rmse: 0.4293
+2023-12-12 14:46:04[INFO]: [EPOCH=003]: loss_main: 0.5008
+2023-12-12 14:46:04[INFO]: [EPOCH=003]: auc: 0.7651 | acc: 0.7234 | rmse: 0.4284
+2023-12-12 14:47:05[INFO]: [EPOCH=004]: loss_main: 0.4937
+2023-12-12 14:47:05[INFO]: [EPOCH=004]: auc: 0.7652 | acc: 0.7213 | rmse: 0.4295
+2023-12-12 14:48:05[INFO]: [EPOCH=005]: loss_main: 0.4889
+2023-12-12 14:48:05[INFO]: [EPOCH=005]: auc: 0.7641 | acc: 0.7248 | rmse: 0.4286
+2023-12-12 14:49:06[INFO]: [EPOCH=006]: loss_main: 0.4851
+2023-12-12 14:49:06[INFO]: [EPOCH=006]: auc: 0.7622 | acc: 0.7237 | rmse: 0.4309
+2023-12-12 14:50:10[INFO]: [EPOCH=007]: loss_main: 0.4830
+2023-12-12 14:50:10[INFO]: [EPOCH=007]: auc: 0.7643 | acc: 0.7119 | rmse: 0.4358
+2023-12-12 14:51:12[INFO]: [EPOCH=008]: loss_main: 0.4806
+2023-12-12 14:51:12[INFO]: [EPOCH=008]: auc: 0.7627 | acc: 0.7192 | rmse: 0.4317
+2023-12-12 14:52:12[INFO]: [EPOCH=009]: loss_main: 0.4788
+2023-12-12 14:52:12[INFO]: [EPOCH=009]: auc: 0.7605 | acc: 0.7212 | rmse: 0.4347
+2023-12-12 14:53:14[INFO]: [EPOCH=010]: loss_main: 0.4774
+2023-12-12 14:53:14[INFO]: [EPOCH=010]: auc: 0.7618 | acc: 0.7238 | rmse: 0.4300
+2023-12-12 14:54:08[INFO]: [EPOCH=011]: loss_main: 0.4760
+2023-12-12 14:54:08[INFO]: [EPOCH=011]: auc: 0.7627 | acc: 0.7232 | rmse: 0.4296
+2023-12-12 14:55:06[INFO]: Suggest to stop training now
+2023-12-12 14:55:06[INFO]: [EPOCH=012]: loss_main: 0.4752
+2023-12-12 14:55:06[INFO]: [EPOCH=012]: auc: 0.7618 | acc: 0.7200 | rmse: 0.4315
+2023-12-12 14:55:06[INFO]: ==============================
+2023-12-12 14:55:06[INFO]: [For auc], the Best Epoch is: 2, the value=0.7652
+2023-12-12 14:55:06[INFO]: [EPOCH=002]: loss_main: 0.5153
+2023-12-12 14:55:06[INFO]: [EPOCH=002]: auc: 0.7652 | acc: 0.7221 | rmse: 0.4293
+2023-12-12 14:55:06[INFO]: ==============================
+2023-12-12 14:55:06[INFO]: Training Completed!
+2023-12-12 14:55:07[INFO]: auc: 0.7652114545590175
+2023-12-12 14:55:07[INFO]: acc: 0.7220517582461948
+2023-12-12 14:55:07[INFO]: rmse: 0.42925354979329766
+2023-12-12 14:55:08[INFO]: ====================
+2023-12-12 14:55:08[INFO]: ====== [FOLD ID]: 1 ======
+2023-12-12 14:55:08[INFO]: [CALLBACK]-ModelCheckPoint has been registered!
+2023-12-12 14:55:08[INFO]: [CALLBACK]-EarlyStopping has been registered!
+2023-12-12 14:55:08[INFO]: [CALLBACK]-History has been registered!
+2023-12-12 14:55:08[INFO]: [CALLBACK]-BaseLogger has been registered!
+2023-12-12 14:55:08[INFO]: Start Training...
+2023-12-12 14:56:09[INFO]: Update best epoch as [1] for auc!
+2023-12-12 14:56:09[INFO]: [EPOCH=001]: loss_main: 0.5713
+2023-12-12 14:56:09[INFO]: [EPOCH=001]: auc: 0.7613 | acc: 0.7182 | rmse: 0.4309
+2023-12-12 14:57:12[INFO]: Update best epoch as [2] for auc!
+2023-12-12 14:57:13[INFO]: [EPOCH=002]: loss_main: 0.5154
+2023-12-12 14:57:13[INFO]: [EPOCH=002]: auc: 0.7640 | acc: 0.7274 | rmse: 0.4272
+2023-12-12 14:58:14[INFO]: [EPOCH=003]: loss_main: 0.5013
+2023-12-12 14:58:14[INFO]: [EPOCH=003]: auc: 0.7639 | acc: 0.7239 | rmse: 0.4286
+2023-12-12 14:59:15[INFO]: Update best epoch as [4] for auc!
+2023-12-12 14:59:15[INFO]: [EPOCH=004]: loss_main: 0.4944
+2023-12-12 14:59:15[INFO]: [EPOCH=004]: auc: 0.7646 | acc: 0.7237 | rmse: 0.4279
+2023-12-12 15:00:14[INFO]: [EPOCH=005]: loss_main: 0.4896
+2023-12-12 15:00:14[INFO]: [EPOCH=005]: auc: 0.7636 | acc: 0.7227 | rmse: 0.4290
+2023-12-12 15:01:17[INFO]: [EPOCH=006]: loss_main: 0.4862
+2023-12-12 15:01:17[INFO]: [EPOCH=006]: auc: 0.7623 | acc: 0.7262 | rmse: 0.4287
+2023-12-12 15:02:17[INFO]: [EPOCH=007]: loss_main: 0.4832
+2023-12-12 15:02:17[INFO]: [EPOCH=007]: auc: 0.7636 | acc: 0.7173 | rmse: 0.4327
+2023-12-12 15:03:20[INFO]: [EPOCH=008]: loss_main: 0.4811
+2023-12-12 15:03:20[INFO]: [EPOCH=008]: auc: 0.7631 | acc: 0.7214 | rmse: 0.4297
+2023-12-12 15:04:23[INFO]: [EPOCH=009]: loss_main: 0.4790
+2023-12-12 15:04:23[INFO]: [EPOCH=009]: auc: 0.7623 | acc: 0.7248 | rmse: 0.4291
+2023-12-12 15:05:25[INFO]: [EPOCH=010]: loss_main: 0.4783
+2023-12-12 15:05:25[INFO]: [EPOCH=010]: auc: 0.7625 | acc: 0.7256 | rmse: 0.4289
+2023-12-12 15:06:27[INFO]: [EPOCH=011]: loss_main: 0.4765
+2023-12-12 15:06:27[INFO]: [EPOCH=011]: auc: 0.7617 | acc: 0.7092 | rmse: 0.4392
+2023-12-12 15:07:32[INFO]: [EPOCH=012]: loss_main: 0.4756
+2023-12-12 15:07:32[INFO]: [EPOCH=012]: auc: 0.7622 | acc: 0.7254 | rmse: 0.4286
+2023-12-12 15:08:34[INFO]: [EPOCH=013]: loss_main: 0.4751
+2023-12-12 15:08:34[INFO]: [EPOCH=013]: auc: 0.7621 | acc: 0.7202 | rmse: 0.4322
+2023-12-12 15:09:38[INFO]: Suggest to stop training now
+2023-12-12 15:09:38[INFO]: [EPOCH=014]: loss_main: 0.4738
+2023-12-12 15:09:38[INFO]: [EPOCH=014]: auc: 0.7612 | acc: 0.7241 | rmse: 0.4308
+2023-12-12 15:09:38[INFO]: ==============================
+2023-12-12 15:09:38[INFO]: [For auc], the Best Epoch is: 4, the value=0.7646
+2023-12-12 15:09:38[INFO]: [EPOCH=004]: loss_main: 0.4944
+2023-12-12 15:09:38[INFO]: [EPOCH=004]: auc: 0.7646 | acc: 0.7237 | rmse: 0.4279
+2023-12-12 15:09:38[INFO]: ==============================
+2023-12-12 15:09:38[INFO]: Training Completed!
+2023-12-12 15:09:39[INFO]: auc: 0.7645609839674171
+2023-12-12 15:09:39[INFO]: acc: 0.723666680124349
+2023-12-12 15:09:39[INFO]: rmse: 0.42785600996879597
+2023-12-12 15:09:39[INFO]: ====================
+2023-12-12 15:09:39[INFO]: ====== [FOLD ID]: 2 ======
+2023-12-12 15:09:39[INFO]: [CALLBACK]-ModelCheckPoint has been registered!
+2023-12-12 15:09:39[INFO]: [CALLBACK]-EarlyStopping has been registered!
+2023-12-12 15:09:39[INFO]: [CALLBACK]-History has been registered!
+2023-12-12 15:09:39[INFO]: [CALLBACK]-BaseLogger has been registered!
+2023-12-12 15:09:39[INFO]: Start Training...
+2023-12-12 15:10:42[INFO]: Update best epoch as [1] for auc!
+2023-12-12 15:10:42[INFO]: [EPOCH=001]: loss_main: 0.5729
+2023-12-12 15:10:42[INFO]: [EPOCH=001]: auc: 0.7639 | acc: 0.7228 | rmse: 0.4276
+2023-12-12 15:11:45[INFO]: Update best epoch as [2] for auc!
+2023-12-12 15:11:45[INFO]: [EPOCH=002]: loss_main: 0.5159
+2023-12-12 15:11:45[INFO]: [EPOCH=002]: auc: 0.7689 | acc: 0.7297 | rmse: 0.4246
+2023-12-12 15:12:47[INFO]: [EPOCH=003]: loss_main: 0.5020
+2023-12-12 15:12:47[INFO]: [EPOCH=003]: auc: 0.7687 | acc: 0.7292 | rmse: 0.4250
+2023-12-12 15:13:45[INFO]: [EPOCH=004]: loss_main: 0.4946
+2023-12-12 15:13:45[INFO]: [EPOCH=004]: auc: 0.7680 | acc: 0.7306 | rmse: 0.4255
+2023-12-12 15:14:47[INFO]: [EPOCH=005]: loss_main: 0.4897
+2023-12-12 15:14:47[INFO]: [EPOCH=005]: auc: 0.7682 | acc: 0.7265 | rmse: 0.4264
+2023-12-12 15:15:50[INFO]: [EPOCH=006]: loss_main: 0.4864
+2023-12-12 15:15:50[INFO]: [EPOCH=006]: auc: 0.7687 | acc: 0.7295 | rmse: 0.4259
+2023-12-12 15:16:50[INFO]: [EPOCH=007]: loss_main: 0.4829
+2023-12-12 15:16:50[INFO]: [EPOCH=007]: auc: 0.7674 | acc: 0.7248 | rmse: 0.4284
+2023-12-12 15:17:51[INFO]: [EPOCH=008]: loss_main: 0.4811
+2023-12-12 15:17:51[INFO]: [EPOCH=008]: auc: 0.7663 | acc: 0.7192 | rmse: 0.4314
+2023-12-12 15:18:50[INFO]: [EPOCH=009]: loss_main: 0.4794
+2023-12-12 15:18:50[INFO]: [EPOCH=009]: auc: 0.7665 | acc: 0.7253 | rmse: 0.4282
+2023-12-12 15:19:47[INFO]: [EPOCH=010]: loss_main: 0.4782
+2023-12-12 15:19:47[INFO]: [EPOCH=010]: auc: 0.7661 | acc: 0.7263 | rmse: 0.4275
+2023-12-12 15:20:49[INFO]: [EPOCH=011]: loss_main: 0.4772
+2023-12-12 15:20:49[INFO]: [EPOCH=011]: auc: 0.7663 | acc: 0.7284 | rmse: 0.4275
+2023-12-12 15:21:49[INFO]: Suggest to stop training now
+2023-12-12 15:21:49[INFO]: [EPOCH=012]: loss_main: 0.4760
+2023-12-12 15:21:49[INFO]: [EPOCH=012]: auc: 0.7659 | acc: 0.7282 | rmse: 0.4292
+2023-12-12 15:21:49[INFO]: ==============================
+2023-12-12 15:21:49[INFO]: [For auc], the Best Epoch is: 2, the value=0.7689
+2023-12-12 15:21:49[INFO]: [EPOCH=002]: loss_main: 0.5159
+2023-12-12 15:21:49[INFO]: [EPOCH=002]: auc: 0.7689 | acc: 0.7297 | rmse: 0.4246
+2023-12-12 15:21:49[INFO]: ==============================
+2023-12-12 15:21:49[INFO]: Training Completed!
+2023-12-12 15:21:51[INFO]: auc: 0.7689037056560923
+2023-12-12 15:21:51[INFO]: acc: 0.7297024506439501
+2023-12-12 15:21:51[INFO]: rmse: 0.42457490165182354
+2023-12-12 15:21:51[INFO]: ====================
+2023-12-12 15:21:51[INFO]: ====== [FOLD ID]: 3 ======
+2023-12-12 15:21:51[INFO]: [CALLBACK]-ModelCheckPoint has been registered!
+2023-12-12 15:21:51[INFO]: [CALLBACK]-EarlyStopping has been registered!
+2023-12-12 15:21:51[INFO]: [CALLBACK]-History has been registered!
+2023-12-12 15:21:51[INFO]: [CALLBACK]-BaseLogger has been registered!
+2023-12-12 15:21:51[INFO]: Start Training...
+2023-12-12 15:22:49[INFO]: Update best epoch as [1] for auc!
+2023-12-12 15:22:50[INFO]: [EPOCH=001]: loss_main: 0.5728
+2023-12-12 15:22:50[INFO]: [EPOCH=001]: auc: 0.7601 | acc: 0.7241 | rmse: 0.4281
+2023-12-12 15:23:49[INFO]: Update best epoch as [2] for auc!
+2023-12-12 15:23:50[INFO]: [EPOCH=002]: loss_main: 0.5163
+2023-12-12 15:23:50[INFO]: [EPOCH=002]: auc: 0.7634 | acc: 0.7262 | rmse: 0.4268
+2023-12-12 15:24:48[INFO]: Update best epoch as [3] for auc!
+2023-12-12 15:24:48[INFO]: [EPOCH=003]: loss_main: 0.5014
+2023-12-12 15:24:48[INFO]: [EPOCH=003]: auc: 0.7643 | acc: 0.7263 | rmse: 0.4267
+2023-12-12 15:25:48[INFO]: [EPOCH=004]: loss_main: 0.4942
+2023-12-12 15:25:48[INFO]: [EPOCH=004]: auc: 0.7622 | acc: 0.7270 | rmse: 0.4265
+2023-12-12 15:26:48[INFO]: [EPOCH=005]: loss_main: 0.4894
+2023-12-12 15:26:48[INFO]: [EPOCH=005]: auc: 0.7629 | acc: 0.7252 | rmse: 0.4278
+2023-12-12 15:27:48[INFO]: [EPOCH=006]: loss_main: 0.4857
+2023-12-12 15:27:48[INFO]: [EPOCH=006]: auc: 0.7622 | acc: 0.7251 | rmse: 0.4294
+2023-12-12 15:28:47[INFO]: [EPOCH=007]: loss_main: 0.4828
+2023-12-12 15:28:47[INFO]: [EPOCH=007]: auc: 0.7617 | acc: 0.7254 | rmse: 0.4281
+2023-12-12 15:29:48[INFO]: [EPOCH=008]: loss_main: 0.4809
+2023-12-12 15:29:48[INFO]: [EPOCH=008]: auc: 0.7633 | acc: 0.7269 | rmse: 0.4275
+2023-12-12 15:30:47[INFO]: [EPOCH=009]: loss_main: 0.4790
+2023-12-12 15:30:47[INFO]: [EPOCH=009]: auc: 0.7608 | acc: 0.7230 | rmse: 0.4299
+2023-12-12 15:31:45[INFO]: [EPOCH=010]: loss_main: 0.4779
+2023-12-12 15:31:45[INFO]: [EPOCH=010]: auc: 0.7615 | acc: 0.7232 | rmse: 0.4298
+2023-12-12 15:32:43[INFO]: [EPOCH=011]: loss_main: 0.4767
+2023-12-12 15:32:43[INFO]: [EPOCH=011]: auc: 0.7602 | acc: 0.7260 | rmse: 0.4292
+2023-12-12 15:33:38[INFO]: [EPOCH=012]: loss_main: 0.4753
+2023-12-12 15:33:38[INFO]: [EPOCH=012]: auc: 0.7617 | acc: 0.7261 | rmse: 0.4290
+2023-12-12 15:34:37[INFO]: Suggest to stop training now
+2023-12-12 15:34:37[INFO]: [EPOCH=013]: loss_main: 0.4745
+2023-12-12 15:34:37[INFO]: [EPOCH=013]: auc: 0.7620 | acc: 0.7270 | rmse: 0.4293
+2023-12-12 15:34:37[INFO]: ==============================
+2023-12-12 15:34:37[INFO]: [For auc], the Best Epoch is: 3, the value=0.7643
+2023-12-12 15:34:37[INFO]: [EPOCH=003]: loss_main: 0.5014
+2023-12-12 15:34:37[INFO]: [EPOCH=003]: auc: 0.7643 | acc: 0.7263 | rmse: 0.4267
+2023-12-12 15:34:37[INFO]: ==============================
+2023-12-12 15:34:37[INFO]: Training Completed!
+2023-12-12 15:34:39[INFO]: auc: 0.7642996149171228
+2023-12-12 15:34:39[INFO]: acc: 0.7262707416528725
+2023-12-12 15:34:39[INFO]: rmse: 0.4266927569143597
+2023-12-12 15:34:39[INFO]: ====================
+2023-12-12 15:34:39[INFO]: ====== [FOLD ID]: 4 ======
+2023-12-12 15:34:39[INFO]: [CALLBACK]-ModelCheckPoint has been registered!
+2023-12-12 15:34:39[INFO]: [CALLBACK]-EarlyStopping has been registered!
+2023-12-12 15:34:39[INFO]: [CALLBACK]-History has been registered!
+2023-12-12 15:34:39[INFO]: [CALLBACK]-BaseLogger has been registered!
+2023-12-12 15:34:39[INFO]: Start Training...
+2023-12-12 15:35:39[INFO]: Update best epoch as [1] for auc!
+2023-12-12 15:35:39[INFO]: [EPOCH=001]: loss_main: 0.5709
+2023-12-12 15:35:39[INFO]: [EPOCH=001]: auc: 0.7612 | acc: 0.7237 | rmse: 0.4284
+2023-12-12 15:36:38[INFO]: Update best epoch as [2] for auc!
+2023-12-12 15:36:39[INFO]: [EPOCH=002]: loss_main: 0.5149
+2023-12-12 15:36:39[INFO]: [EPOCH=002]: auc: 0.7643 | acc: 0.7229 | rmse: 0.4298
+2023-12-12 15:37:35[INFO]: [EPOCH=003]: loss_main: 0.5009
+2023-12-12 15:37:35[INFO]: [EPOCH=003]: auc: 0.7639 | acc: 0.7252 | rmse: 0.4278
+2023-12-12 15:38:33[INFO]: Update best epoch as [4] for auc!
+2023-12-12 15:38:33[INFO]: [EPOCH=004]: loss_main: 0.4940
+2023-12-12 15:38:33[INFO]: [EPOCH=004]: auc: 0.7646 | acc: 0.7232 | rmse: 0.4279
+2023-12-12 15:39:33[INFO]: [EPOCH=005]: loss_main: 0.4892
+2023-12-12 15:39:33[INFO]: [EPOCH=005]: auc: 0.7636 | acc: 0.7238 | rmse: 0.4290
+2023-12-12 15:40:35[INFO]: [EPOCH=006]: loss_main: 0.4854
+2023-12-12 15:40:35[INFO]: [EPOCH=006]: auc: 0.7637 | acc: 0.7243 | rmse: 0.4280
+2023-12-12 15:41:34[INFO]: [EPOCH=007]: loss_main: 0.4827
+2023-12-12 15:41:34[INFO]: [EPOCH=007]: auc: 0.7613 | acc: 0.7240 | rmse: 0.4290
+2023-12-12 15:42:38[INFO]: [EPOCH=008]: loss_main: 0.4803
+2023-12-12 15:42:38[INFO]: [EPOCH=008]: auc: 0.7613 | acc: 0.7224 | rmse: 0.4319
+2023-12-12 15:43:40[INFO]: [EPOCH=009]: loss_main: 0.4787
+2023-12-12 15:43:40[INFO]: [EPOCH=009]: auc: 0.7636 | acc: 0.7236 | rmse: 0.4290
+2023-12-12 15:44:41[INFO]: [EPOCH=010]: loss_main: 0.4773
+2023-12-12 15:44:41[INFO]: [EPOCH=010]: auc: 0.7628 | acc: 0.7245 | rmse: 0.4296
+2023-12-12 15:45:42[INFO]: [EPOCH=011]: loss_main: 0.4763
+2023-12-12 15:45:42[INFO]: [EPOCH=011]: auc: 0.7639 | acc: 0.7238 | rmse: 0.4293
+2023-12-12 15:46:43[INFO]: [EPOCH=012]: loss_main: 0.4753
+2023-12-12 15:46:43[INFO]: [EPOCH=012]: auc: 0.7631 | acc: 0.7244 | rmse: 0.4295
+2023-12-12 15:47:44[INFO]: [EPOCH=013]: loss_main: 0.4742
+2023-12-12 15:47:44[INFO]: [EPOCH=013]: auc: 0.7635 | acc: 0.7251 | rmse: 0.4308
+2023-12-12 15:48:45[INFO]: Suggest to stop training now
+2023-12-12 15:48:45[INFO]: [EPOCH=014]: loss_main: 0.4726
+2023-12-12 15:48:45[INFO]: [EPOCH=014]: auc: 0.7624 | acc: 0.7232 | rmse: 0.4308
+2023-12-12 15:48:45[INFO]: ==============================
+2023-12-12 15:48:45[INFO]: [For auc], the Best Epoch is: 4, the value=0.7646
+2023-12-12 15:48:45[INFO]: [EPOCH=004]: loss_main: 0.4940
+2023-12-12 15:48:45[INFO]: [EPOCH=004]: auc: 0.7646 | acc: 0.7232 | rmse: 0.4279
+2023-12-12 15:48:45[INFO]: ==============================
+2023-12-12 15:48:45[INFO]: Training Completed!
+2023-12-12 15:48:47[INFO]: auc: 0.7646446654720309
+2023-12-12 15:48:47[INFO]: acc: 0.7232427631313335
+2023-12-12 15:48:47[INFO]: rmse: 0.42786471675871496
+2023-12-12 15:48:48[INFO]: ====================
+2023-12-12 15:48:48[INFO]: All Fold Mean auc = 0.7655240849143361
+2023-12-12 15:48:48[INFO]: All Fold Mean acc = 0.72498687875974
+2023-12-12 15:48:48[INFO]: All Fold Mean rmse = 0.42724838701739837
+2023-12-12 15:48:48[INFO]: Task: 2023-12-12-144240 Completed!

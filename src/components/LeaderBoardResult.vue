@@ -153,6 +153,7 @@
         </div>
         -->
       </div>
+      <div>Current Sorted Key: {{ currentSortedKey }}</div>
       <div
         ref="chartRef"
         style="width: 100%; height: 400px"
@@ -161,6 +162,7 @@
       <h3 style="margin-top: 15px">Presentation of Models' Results</h3>
       <div class="card model-result-show">
         <div class="card-body">
+          <!-- <input v-model="searchText" placeholder="请输入搜索条件" /> -->
           <table class="table">
             <thead>
               <tr>
@@ -292,8 +294,7 @@
 </template>
 
 <script>
-import { reactive, ref, onMounted } from "vue"
-import { computed } from "vue"
+import { reactive, ref, onMounted, computed, watch } from "vue"
 import * as echarts from "echarts"
 export default {
   name: "LeaderBoardResult",
@@ -420,6 +421,13 @@ export default {
       },
       deep: true,
     },
+    filteredItems: {
+      handler(value) {
+        console.log(value, "-----------filteredItems--------")
+        this.redrawChart()
+      },
+      deep: true,
+    },
   },
 
   computed: {
@@ -469,9 +477,11 @@ export default {
     const addRowItem = (model) => {
       data_show_result.items.push(props.dataInfo.data_source[model - 1])
     }
+    const currentSortedKey = ref('');
     // 排序指标操作
     const sortBy = (key) => {
       data_show_result.sortedKey = key // 排序关键字
+      currentSortedKey.value = key
       data_show_result.sortOrders[key] = data_show_result.sortOrders[key] * -1 // 关键字排序方向,
       data_show_result.sortIcons[key] = 1
       console.log(data_show_result)
@@ -491,6 +501,21 @@ export default {
         return data_show_result.items
       }
     })
+
+    const searchText = ref('')
+  
+    const filteredItems = computed(() => {
+      const lowerCaseSearchText = searchText.value.toLowerCase();
+      return data_show_result.items.filter(item => {
+        return item["model"].toLowerCase().includes(lowerCaseSearchText);
+      });
+    });
+
+    // 监听 searchText 变化，当 searchText 改变时重新过滤数据
+    watch(searchText, () => {
+      // 在这里可以执行其他逻辑，如果需要的话
+      console.log('Search text changed:', searchText.value);
+    });
     // 评估指标选择
     const metric_selectPart = () => {
       context.emit("metric_selectPart", metric_state.selct)
@@ -655,10 +680,6 @@ export default {
           option.series[1]['yAxisIndex'] = 1;
         }
       }
-      
-
-      
-
       myChart.setOption(option, true);
     };
 
@@ -671,6 +692,9 @@ export default {
       metric_state,
       sortBy,
       sortedItems,
+      searchText,
+      filteredItems,
+      currentSortedKey,
       addColField,
       addRowItem,
       metric_show,

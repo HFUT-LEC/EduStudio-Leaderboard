@@ -127,9 +127,10 @@ export default {
     },
   },
   setup(props, context) {
+    // ref 响应式，也是默认值
     let selectedTask = ref("CognitiveDiagnosis");
-    let selectedDataset = ref("");
-    let selectedApplication = ref("");
+    let selectedDataset = ref("FrcSub");
+    let selectedApplication = ref("General");
     // 维护: 依据任务需求在此处进行数据集重选择
     const dataset_show = reactive({
       CognitiveDiagnosis: ['FrcSub', 'ASSISTment0910'],

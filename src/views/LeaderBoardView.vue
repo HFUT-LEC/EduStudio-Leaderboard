@@ -149,22 +149,20 @@ export default {
     }
     // 利用UI选择的评估指标进行数据筛选
     const metric_selectPart = (data) => {
-      if (data.length && data.length == dataInfo.metrics.length) {
-        metric_state_father.allSelected = true
-        metric_state_father.indeterminate = false
-        metric_state_father.selct = data
-      } else if (data.length && data.length != dataInfo.metrics.length) {
+      if (data.length && data.length > 2) {
+        alert('仅支持选择两个Metric选项，多于两个只保留上两个已选选项');
+
+        // 如果选中的选项数量超过两个，只保留前两个选项
+        metric_state_father.selct = data.slice(0, 2);
+      } else {
         metric_state_father.allSelected = false
         metric_state_father.indeterminate = true
         metric_state_father.selct = data
-      } else {
-        metric_state_father.indeterminate = false
-        metric_state_father.selct = []
       }
     }
     const metric_selectAll = (data) => {
       if (data) {
-        metric_state_father.selct = dataInfo.metrics.map((me) => me.id)
+        metric_state_father.selct = [dataInfo.metrics[0].id, dataInfo.metrics[1].id]
         metric_state_father.allSelected = true
         metric_state_father.indeterminate = false
       } else {

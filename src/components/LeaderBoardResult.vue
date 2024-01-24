@@ -81,6 +81,7 @@
             </div>
           </div>
         </div>
+
         <!-- 交叉验证 -->
         <div>
           <div class="row check-all">
@@ -93,50 +94,13 @@
                   @change="fold_selectAll"
                   id="fold-check-all"
                 />
-                <label
-                  class="form-check-label"
-                  for="fold-check-all"
-                  >Fold</label
-                >
+                <label class="form-check-label" for="fold-check-all">Fold</label>
               </div>
             </div>
-            <div class="col-auto om-col-auto-icon">
-              <svg
-                @click="fold_show"
-                v-if="!dataInfo.fold_icon_is_showed"
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-caret-down"
-                viewBox="0 0 16 16"
-              >
-                <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z" />
-              </svg>
-              <svg
-                @click="fold_unshow"
-                v-if="dataInfo.fold_icon_is_showed"
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-caret-up"
-                viewBox="0 0 16 16"
-              >
-                <path d="M3.204 11h9.592L8 5.519 3.204 11zm-.753-.659 4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659z" />
-              </svg>
-            </div>
           </div>
-          <div
-            v-if="dataInfo.fold_icon_is_showed"
-            class="card icon-check-list"
-          >
+          <div class="card icon-check-list">
             <div class="card-body om-card-body-content">
-              <div
-                v-for="fo in dataInfo.folds"
-                :key="fo.id"
-                class="form-check form-check-inline"
-              >
+              <div v-for="fo in dataInfo.folds" :key="fo.id" class="form-check form-check-inline">
                 <input
                   v-model="fold_state.selct"
                   class="form-check-input"
@@ -145,15 +109,12 @@
                   :value="fo.id"
                   @change="fold_selectPart"
                 />
-                <label
-                  class="form-check-label"
-                  :for="fo.id"
-                  >{{ fo.fold }}</label
-                >
+                <label class="form-check-label" :for="fo.id">{{ fo.fold }}</label>
               </div>
             </div>
           </div>
         </div>
+
         <!-- 评估指标选择 -->
         <div>
           <div class="row check-all">
@@ -167,50 +128,13 @@
                   id="metric-check-all"
                   :indeterminate="metric_state.indeterminate"
                 />
-                <label
-                  class="form-check-label"
-                  for="metric-check-all"
-                  >Metric</label
-                >
+                <label class="form-check-label" for="metric-check-all">Metric</label>
               </div>
             </div>
-            <div class="col-auto om-col-auto-icon">
-              <svg
-                @click="metric_show"
-                v-if="!dataInfo.metric_icon_is_showed"
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-caret-down"
-                viewBox="0 0 16 16"
-              >
-                <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z" />
-              </svg>
-              <svg
-                @click="metric_unshow"
-                v-if="dataInfo.metric_icon_is_showed"
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-caret-up"
-                viewBox="0 0 16 16"
-              >
-                <path d="M3.204 11h9.592L8 5.519 3.204 11zm-.753-.659 4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659z" />
-              </svg>
-            </div>
           </div>
-          <div
-            v-if="dataInfo.metric_icon_is_showed"
-            class="card icon-check-list"
-          >
+          <div class="card icon-check-list">
             <div class="card-body om-card-body-content">
-              <div
-                v-for="me in dataInfo.metrics"
-                :key="me.id"
-                class="form-check form-check-inline"
-              >
+              <div v-for="me in dataInfo.metrics" :key="me.id" class="form-check form-check-inline">
                 <input
                   v-model="metric_state.selct"
                   class="form-check-input"
@@ -219,16 +143,11 @@
                   :value="me.id"
                   @change="metric_selectPart"
                 />
-                <label
-                  class="form-check-label"
-                  :for="me.id"
-                  >{{ me.metric }}</label
-                >
+                <label class="form-check-label" :for="me.id">{{ me.metric }}</label>
               </div>
             </div>
           </div>
         </div>
-        <!-- 可以增加其他选择操作 -->
         <!-- <div>
           {{ model_state.selct }}
         </div>
@@ -325,7 +244,7 @@
                   :key="field.key"
                 >
                   <a
-                    :href="item[field.logurl1]"
+                    :href="getTruncatedUrl(item[field.logurl1])"
                     target="_blank"
                     v-if="fold_state.selct == 101"
                   >
@@ -400,11 +319,10 @@ export default {
     // 初始化
     dataInfo: {
       handler(newVal) {
-        // console.log(newVal, "---------dataInfo-----newVal---------")
         if (newVal.is_showed) {
-          this.$nextTick(() => {
+          // this.$nextTick(() => {
             this.drawChart()
-          })
+          // })
         }
       },
       deep: true,
@@ -425,7 +343,6 @@ export default {
         }
 
         console.log(this.data_show_result, "----------data_show_result---------")
-        // this.redrawChart()
       },
       deep: true,
     },
@@ -460,7 +377,8 @@ export default {
       deep: true,
     },
     metric_state_father: {
-      handler(newVal) {
+      handler(newVal, oldVal, source) {
+        console.log("Triggered by:", source)
         console.log(newVal, "----------metric-newVal---------")
         this.metric_state.allSelected = newVal.allSelected
         this.metric_state.indeterminate = newVal.indeterminate
@@ -490,7 +408,7 @@ export default {
         }
         console.log(this.data_show_result, "-----------data_show_result.fields--------")
         // this.$nextTick(() => {
-        this.redrawChart()
+          this.redrawChart()
         // })
       },
       deep: true,
@@ -503,12 +421,28 @@ export default {
       deep: true,
     },
   },
+
+  computed: {
+    getTruncatedUrl() {
+      return (url) => {
+        const lastSlashIndex = url.lastIndexOf('/');
+        return lastSlashIndex !== -1 ? url.substring(0, lastSlashIndex) : url;
+      };
+    },
+  },
   setup(props, context) {
     const data_show_result = reactive({
       sortedKey: "",
       sortOrders: { "auc-1": 1, "rmse-1": 1, "acc-1": 1, "auc-5": 1, "rmse-5": 1, "acc-5": 1 },
       sortIcons: { "auc-1": 0, "rmse-1": 0, "acc-1": 0, "auc-5": 0, "rmse-5": 0, "acc-5": 0 },
-      fixed_fields: [[{ label: "Logs", logurl1: "logurl-1", logurl2: "logurl-5" }], [{ key: "model", label: "Model" }]],
+      fixed_fields: [
+        [
+          { label: "Logs", logurl1: "logurl-1", logurl2: "logurl-5" }
+        ], 
+        [
+          { key: "model", label: "Model" }
+        ]
+      ],
       fields: [],
       items: [], // 确定显示的模型
     })
@@ -624,15 +558,16 @@ export default {
                 interval: 0,
               },
               axisLabel: {
-                interval: 0,
-              },
+              interval: 0,
+              rotate: 270, // 设置标签旋转角度为270度
+            },
               data: data_show_result.items.map((item) => item.model),
             },
           ],
           yAxis: [
             {
               type: "value",
-              name: "数值",
+              name: "",
               min: 0,
               max: 1,
               position: "left",
@@ -648,7 +583,8 @@ export default {
     }
     // 重绘
     const redrawChart = () => {
-      let seriesList = []
+      let seriesList = [];
+
       // 排序数据处理 sortedItems (data_show_result.items处理后的)
       if (data_show_result.fields.length > 0) {
         data_show_result.fields.forEach((item) => {
@@ -657,10 +593,9 @@ export default {
             type: "line",
             smooth: false,
             data: sortedItems.value.map((ifem) => ifem[item.key]),
-          })
-        })
+          });
+        });
       }
-      console.log(seriesList, "---------seriesList-----------")
 
       // 绘制图表
       let option = {
@@ -668,7 +603,9 @@ export default {
           trigger: "axis",
           axisPointer: { type: "cross" },
         },
-        legend: {},
+        legend: {
+          bottom: -5, // 设置legend位于图表底部
+        },
         xAxis: [
           {
             type: "category",
@@ -678,27 +615,53 @@ export default {
             },
             axisLabel: {
               interval: 0,
+              rotate: 270, // 设置标签旋转角度为270度
             },
             data: sortedItems.value.map((item) => item.model),
           },
         ],
         yAxis: [
           {
-            type: "value",
-            name: "数值",
-            min: 0,
-            max: 1,
-            position: "left",
+            type: 'value',
+            name: "",
+            min: 0, // 设置最小值
+            max: 1, // 设置最大值
+            position: 'left',
             axisLabel: {
-              formatter: "{value}",
-            },
+              formatter: '{value}'
+            }
           },
         ],
         series: seriesList,
+      };
+
+      if (seriesList.length != 0) {
+        option.yAxis[0].name = seriesList[0]["name"];
+        option.yAxis[0].min = Math.floor(Math.min(...seriesList[0].data) * 10) / 10;
+        option.yAxis[0].max = Math.ceil(Math.max(...seriesList[0].data) * 10) / 10;
+        option.series[0]["yAxisIndex"] = 0;
+
+        if (seriesList.length == 2) {
+          option.yAxis.push({
+            type: 'value',
+            name: seriesList[1]["name"],
+            min: Math.floor(Math.min(...seriesList[1].data) * 10) / 10,
+            max: Math.ceil(Math.max(...seriesList[1].data) * 10) / 10,
+            position: 'right',
+            axisLabel: {
+              formatter: '{value}'
+            }
+          })
+          option.series[1]['yAxisIndex'] = 1;
+        }
       }
-      myChart.setOption(option, true)
-      // myChart.setOption({ series: seriesList }, true)
-    }
+      
+
+      
+
+      myChart.setOption(option, true);
+    };
+
     onMounted(() => {})
 
     return {

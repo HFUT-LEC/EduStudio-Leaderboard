@@ -153,7 +153,7 @@
         </div>
         -->
       </div>
-      <div>Current Sorted Key: {{ currentSortedKey }}</div>
+      <div style="text-align: center;font-size: 20px;"> Sorted benchmarking results by {{ currentSortedKey }}</div>
       <div
         ref="chartRef"
         style="width: 100%; height: 400px"
@@ -294,7 +294,7 @@
 </template>
 
 <script>
-import { reactive, ref, onMounted, computed, watch } from "vue"
+import { reactive, ref, onMounted, computed, watch, provide } from "vue"
 import * as echarts from "echarts"
 export default {
   name: "LeaderBoardResult",
@@ -478,10 +478,11 @@ export default {
       data_show_result.items.push(props.dataInfo.data_source[model - 1])
     }
     const currentSortedKey = ref('');
+    provide('currentSortedKey', currentSortedKey);
     // 排序指标操作
     const sortBy = (key) => {
       data_show_result.sortedKey = key // 排序关键字
-      currentSortedKey.value = key
+      currentSortedKey.value = key.toUpperCase()
       data_show_result.sortOrders[key] = data_show_result.sortOrders[key] * -1 // 关键字排序方向,
       data_show_result.sortIcons[key] = 1
       console.log(data_show_result)

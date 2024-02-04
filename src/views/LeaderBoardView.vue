@@ -33,8 +33,7 @@
 import LeaderBoardSelect from "@/components/LeaderBoardSelect"
 import LeaderBoardResult from "@/components/LeaderBoardResult"
 import $ from "jquery"
-import { reactive } from "vue"
-import { computed } from "vue"
+import { reactive, computed, inject } from "vue"
 
 export default {
   name: "LeaderBoardView",
@@ -119,6 +118,14 @@ export default {
       indeterminate: false,
       selct: [],
     })
+  
+    const currentSortedKey = inject('currentSortedKey', () => {
+      throw new Error('currentSortedKey injection failed'); // 确保注入成功
+    });
+    const changeValue = () => {
+      currentSortedKey.value = 'TEST';
+    }
+
     // 进行数据请求操作
     const refresh = async (selectedTask, selectedDataset, selectedApplication) => {
       showContext.is_showed = true // 标志，是否展示数据部分的操作
@@ -129,7 +136,7 @@ export default {
       // console.log(showContext.task, showContext.dataset, showContext.application);
       // 读取远程数据
       let optResult = computed(() => showContext.taskID[showContext.task] * 100 + showContext.datasetID[showContext.dataset] * 10 + showContext.applicationID[showContext.application])
-      let optResultPath = "https://raw.githubusercontent.com/Chuckie-XC1028/EduStudioData/main/results/result_" + optResult.value.toString() + ".json"
+      let optResultPath = "https://raw.githubusercontent.com/HFUT-LEC/EduStudio-Leaderboard/main/results/result_" + optResult.value.toString() + ".json"
       const dt = await $.getJSON(optResultPath) // 利用asunc和await实现响应等待操作：后续的代码执行会等待回调函数$.getJSON()执行完成
       // console.log(dt);
       dataInfo.model_icon_is_showed = true // 设置重置数据类时, Model列自动展开
@@ -140,12 +147,14 @@ export default {
       model_state.indeterminate = false
       model_state.selct = dataInfo.models.map((mo) => mo.id)
       // 设置初始Fold的状态
-      fold_state_father.allSelected = false
-      fold_state_father.selct = -1
+      fold_state_father.allSelected = true
+      fold_state_father.selct = dataInfo.folds[0].id
       // 设置初始Metric的状态
-      metric_state_father.allSelected = false
+      metric_state_father.allSelected = true
       metric_state_father.indeterminate = false
-      metric_state_father.selct = []
+      metric_state_father.selct = [dataInfo.metrics[0].id, dataInfo.metrics[1].id]
+
+      changeValue()
     }
     // 利用UI选择的评估指标进行数据筛选
     const metric_selectPart = (data) => {

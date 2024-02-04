@@ -1,4 +1,4 @@
-# esleaderboard
+# Frontend of EduStudio Leaderboard
 
 ## Project setup
 ```

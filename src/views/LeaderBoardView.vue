@@ -136,7 +136,7 @@ export default {
       // console.log(showContext.task, showContext.dataset, showContext.application);
       // 读取远程数据
       let optResult = computed(() => showContext.taskID[showContext.task] * 100 + showContext.datasetID[showContext.dataset] * 10 + showContext.applicationID[showContext.application])
-      let optResultPath = "https://raw.githubusercontent.com/HFUT-LEC/EduStudio-Leaderboard/main/results/result_" + optResult.value.toString() + ".json"
+      let optResultPath = "https://raw.githubusercontent.com/HFUT-LEC/EduStudio-Leaderboard/backend/results/result_" + optResult.value.toString() + ".json"
       const dt = await $.getJSON(optResultPath) // 利用asunc和await实现响应等待操作：后续的代码执行会等待回调函数$.getJSON()执行完成
       // console.log(dt);
       dataInfo.model_icon_is_showed = true // 设置重置数据类时, Model列自动展开

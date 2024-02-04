@@ -663,16 +663,19 @@ export default {
 
       if (seriesList.length != 0) {
         option.yAxis[0].name = seriesList[0]["name"];
-        option.yAxis[0].min = Math.floor(Math.min(...seriesList[0].data) * 10) / 10;
-        option.yAxis[0].max = Math.ceil(Math.max(...seriesList[0].data) * 10) / 10;
+        let min_val = Math.min(...seriesList[0].data);
+        let max_val = Math.max(...seriesList[0].data);
+
+        option.yAxis[0].min = min_val;
+        option.yAxis[0].max = max_val;
         option.series[0]["yAxisIndex"] = 0;
 
         if (seriesList.length == 2) {
           option.yAxis.push({
             type: 'value',
             name: seriesList[1]["name"],
-            min: Math.floor(Math.min(...seriesList[1].data) * 10) / 10,
-            max: Math.ceil(Math.max(...seriesList[1].data) * 10) / 10,
+            min: Math.min(...seriesList[1].data),
+            max: Math.max(...seriesList[1].data),
             position: 'right',
             axisLabel: {
               formatter: '{value}'

@@ -1,90 +1,46 @@
 <template>
-  
-  <div
-    v-if="dataInfo.is_showed"
-  >
-  
-    
-      <!-- 操作选择 -->
-      <h3 class="mt-3">Listed Operations and Metrics</h3>
-      <div class="om-select-list">
-        <!-- 模型选择 -->
-        <div>
-          <div class="row check-all">
-            <div class="col-auto om-col-auto-form-check">
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  v-model="modelState_change.allSelected"
-                  @change="model_selectAll"
-                  id="model-check-all"
-                  :indeterminate="model_state.indeterminate"
-                />
-                <label
-                  class="form-check-label"
-                  for="model-check-all"
-                  >Model</label
-                >
-              </div>
-            </div>
-            <div class="col-auto om-col-auto-icon">
-              <svg
-                @click="model_show"
-                v-if="!dataInfo.model_icon_is_showed"
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-caret-down"
-                viewBox="0 0 16 16"
-              >
-                <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z" />
-              </svg>
-              <svg
-                @click="model_unshow"
-                v-if="dataInfo.model_icon_is_showed"
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-caret-up"
-                viewBox="0 0 16 16"
-              >
-                <path d="M3.204 11h9.592L8 5.519 3.204 11zm-.753-.659 4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659z" />
-              </svg>
+  <div v-if="dataInfo.is_showed">
+
+
+    <!-- 操作选择 -->
+    <h3 class="mt-3">Listed Operations and Metrics</h3>
+    <div class="om-select-list">
+      <!-- 模型选择 -->
+      <div>
+        <div class="row check-all">
+          <div class="col-auto om-col-auto-form-check">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" v-model="modelState_change.allSelected"
+                @change="model_selectAll" id="model-check-all" :indeterminate="model_state.indeterminate" />
+              <label class="form-check-label" for="model-check-all">Model</label>
             </div>
           </div>
-          <div
-            v-if="dataInfo.model_icon_is_showed"
-            class="card icon-check-list"
-          >
-            <div class="card-body om-card-body-content">
-              <div
-                v-for="mo in dataInfo.models"
-                :key="mo.id"
-                class="form-check form-check-inline"
-              >
-                <input
-                  v-model="modelState_change.selct"
-                  class="form-check-input"
-                  type="checkbox"
-                  :id="mo.id"
-                  :value="mo.id"
-                  @change="model_selectPart"
-                />
-                <label
-                  class="form-check-label"
-                  :for="mo.id"
-                  >{{ mo.model }}</label
-                >
-              </div>
+          <div class="col-auto om-col-auto-icon">
+            <svg @click="model_show" v-if="!dataInfo.model_icon_is_showed" xmlns="http://www.w3.org/2000/svg" width="16"
+              height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
+              <path
+                d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z" />
+            </svg>
+            <svg @click="model_unshow" v-if="dataInfo.model_icon_is_showed" xmlns="http://www.w3.org/2000/svg" width="16"
+              height="16" fill="currentColor" class="bi bi-caret-up" viewBox="0 0 16 16">
+              <path
+                d="M3.204 11h9.592L8 5.519 3.204 11zm-.753-.659 4.796-5.48a1 1 0 0 1 1.506 0l4.796 5.48c.566.647.106 1.659-.753 1.659H3.204a1 1 0 0 1-.753-1.659z" />
+            </svg>
+          </div>
+        </div>
+        <div v-if="dataInfo.model_icon_is_showed" class="card icon-check-list">
+          <div class="card-body om-card-body-content">
+            <div v-for="mo in dataInfo.models" :key="mo.id" class="form-check form-check-inline">
+              <input v-model="modelState_change.selct" class="form-check-input" type="checkbox" :id="mo.id" :value="mo.id"
+                @change="model_selectPart" />
+              <label class="form-check-label" :for="mo.id">{{ mo.model }}</label>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- 交叉验证 -->
-        <!-- <div>
+      <!-- 交叉验证 -->
+      <!-- <div>
           <div class="row check-all">
             <div class="col-auto om-col-auto-form-check">
               <div class="form-check">
@@ -116,189 +72,168 @@
           </div>
         </div> -->
 
-        <!-- 评估指标选择 -->
-        <div>
-          <div class="row check-all">
-            <div class="col-auto om-col-auto-form-check">
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  v-model="metric_state.allSelected"
-                  @change="metric_selectAll"
-                  id="metric-check-all"
-                  :indeterminate="metric_state.indeterminate"
-                />
-                <label class="form-check-label" for="metric-check-all">Metric</label>
-              </div>
-            </div>
-          </div>
-          <div class="card icon-check-list">
-            <div class="card-body om-card-body-content">
-              <div v-for="me in dataInfo.metrics" :key="me.id" class="form-check form-check-inline">
-                <input
-                  v-model="metric_state.selct"
-                  class="form-check-input"
-                  type="checkbox"
-                  :id="me.id"
-                  :value="me.id"
-                  @change="metric_selectPart"
-                />
-                <label class="form-check-label" :for="me.id">{{ me.metric }}</label>
-              </div>
+      <!-- 评估指标选择 -->
+      <div>
+        <div class="row check-all">
+          <div class="col-auto om-col-auto-form-check">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" v-model="metric_state.allSelected"
+                @change="metric_selectAll" id="metric-check-all" :indeterminate="metric_state.indeterminate" />
+              <label class="form-check-label" for="metric-check-all">Metric</label>
             </div>
           </div>
         </div>
-        <!-- <div>
+        <div class="card icon-check-list">
+          <div class="card-body om-card-body-content">
+            <div v-for="me in dataInfo.metrics" :key="me.id" class="form-check form-check-inline">
+              <input v-model="metric_state.selct" class="form-check-input" type="checkbox" :id="me.id" :value="me.id"
+                @change="metric_selectPart" />
+              <label class="form-check-label" :for="me.id">{{ me.metric }}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div>
           {{ model_state.selct }}
         </div>
         -->
-      </div>
-        <div class="row">
-          <div class="col-sm-12">
-          <div style="text-align: center;font-size: 20px;"> Sorted by {{ currentSortedKey }}</div>
-            <div
-              ref="chartRef"
-              style="width: 100%; height: 400px"
-            >
-          </div>
-        </div>
-      </div>
-      
-      <!-- 数据表格展示 -->
-      <!-- <h3 style="margin-top: 15px">Presentation of Models' Results</h3> -->
-      <div >
-        <div class="mt-3">
-          <!-- <input v-model="searchText" placeholder="请输入搜索条件" /> -->
-          <table id="dtBasicExample" class="table table-bordered table-sm table-hover" cellspacing="0" width="100%" style="font-size: 16px; text-align: center;">
-            <thead >
-              <tr>
-                <th
-                  v-for="field in data_show_result.fixed_fields[1]"
-                  :key="field.key" style="font-weight: bold;"
-                >
-                  {{ field.label }}
-                </th>
-                <th
-                  v-for="field in data_show_result.fields"
-                  :key="field.key" style="font-weight: bold;"
-                >
-                  <div style="align-items: center; gap: 10px">
-                    {{ field.label }}
-                    <svg
-                      @click="sortBy(field.key)"
-                      :id=field.key
-                      v-if="!data_show_result.sortIcons[field.key]"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      class="bi bi-caret-down"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z" />
-                    </svg>
-                    <svg
-                      @click="sortBy(field.key)"
-                      v-if="data_show_result.sortIcons[field.key] && data_show_result.sortOrders[field.key] == -1"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      class="bi bi-caret-down-fill"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
-                    </svg>
-                    <svg
-                      @click="sortBy(field.key)"
-                      v-if="data_show_result.sortIcons[field.key] && data_show_result.sortOrders[field.key] == 1"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      class="bi bi-caret-up-fill"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z" />
-                    </svg>
-                  </div>
-                </th>
-                <th
-                  v-for="field in data_show_result.fixed_fields[0]"
-                  :key="field.key" style="font-weight: bold;"
-                >
-                  {{ field.label }}
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr
-                v-for="item in sortedItems"
-                :key="item.id"
-              >
-                <td
-                  v-for="field in data_show_result.fixed_fields[1]"
-                  :key="field.key"
-                >
-                  {{ item[field.key] }}
-                </td>
-                <td
-                  v-for="field in data_show_result.fields"
-                  :key="field.key"
-                >
-                  {{ item[field.key] }}
-                </td>
-                <td
-                  v-for="field in data_show_result.fixed_fields[0]"
-                  :key="field.key"
-                >
-                  <a
-                    :href="getTruncatedUrl(item[field.logurl1])"
-                    target="_blank"
-                    v-if="fold_state.selct == 101"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      class="bi bi-gear"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z" />
-                      <path
-                        d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"
-                      />
-                    </svg>
-                  </a>
-                  <a
-                    :href="item[field.logurl2]"
-                    target="_blank"
-                    v-if="fold_state.selct == 102"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      class="bi bi-gear"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z" />
-                      <path
-                        d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"
-                      />
-                    </svg>
-                  </a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div style="text-align: center;font-size: 20px;"> Sorted by {{ currentSortedKey }}</div>
+        <div ref="chartRef" style="width: 100%; height: 400px">
         </div>
       </div>
     </div>
 
+    <!-- 数据表格展示 -->
+    <!-- <h3 style="margin-top: 15px">Presentation of Models' Results</h3> -->
+    <div>
+      <div class="mt-4">
+        <!-- <div class="row mb-2">
+          <div class="col-sm-12 col-md-6">
+            <div class="dataTables_length bs-select" id="dtBasicExample_length">
+              <label>Show
+                <select name="dtBasicExample_length" aria-controls="dtBasicExample"
+                  class="custom-select custom-select-sm form-control form-control-sm"
+                  style="display: inline-block; width: auto;margin-left: 0.5rem;">
+                  <option value="10">10</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                </select> entries</label>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <div id="dtBasicExample_filter" style="text-align: right;">
+              <label>
+                Search:<input type="search" class="form-control form-control-sm" placeholder=""
+                  aria-controls="dtBasicExample" style="display: inline-block; width: auto;margin-left: 0.5rem;">
+              </label>
+            </div>
+          </div>
+        </div> -->
+        <!-- <input type="text" v-model="searchTerm" placeholder="Search" class="form-control mb-3"> -->
+        <table id="dtBasicExample" class="table table-bordered table-sm table-hover" cellspacing="0" width="100%"
+          style="font-size: 16px; text-align: center;">
+          <thead>
+            <tr>
+              <th v-for="field in data_show_result.fixed_fields[1]" :key="field.key" style="font-weight: bold;">
+                {{ field.label }}
+              </th>
+              <th v-for="field in data_show_result.fields" :key="field.key" style="font-weight: bold;">
+                <div style="align-items: center; gap: 10px">
+                  {{ field.label }}
+                  <svg @click="sortBy(field.key)" :id=field.key v-if="!data_show_result.sortIcons[field.key]"
+                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z" />
+                  </svg>
+                  <svg @click="sortBy(field.key)"
+                    v-if="data_show_result.sortIcons[field.key] && data_show_result.sortOrders[field.key] == -1"
+                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                    <path
+                      d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                  </svg>
+                  <svg @click="sortBy(field.key)"
+                    v-if="data_show_result.sortIcons[field.key] && data_show_result.sortOrders[field.key] == 1"
+                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-caret-up-fill" viewBox="0 0 16 16">
+                    <path
+                      d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z" />
+                  </svg>
+                </div>
+              </th>
+              <th v-for="field in data_show_result.fixed_fields[0]" :key="field.key" style="font-weight: bold;">
+                {{ field.label }}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="item in sortedItems" :key="item.id">
+              <td v-for="field in data_show_result.fixed_fields[1]" :key="field.key">
+                {{ item[field.key] }}
+              </td>
+              <td v-for="field in data_show_result.fields" :key="field.key">
+                {{ item[field.key] }}
+              </td>
+              <td v-for="field in data_show_result.fixed_fields[0]" :key="field.key">
+                <a :href="getTruncatedUrl(item[field.logurl1])" target="_blank" v-if="fold_state.selct == 101">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z" />
+                    <path
+                      d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z" />
+                  </svg>
+                </a>
+                <a :href="item[field.logurl2]" target="_blank" v-if="fold_state.selct == 102">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z" />
+                    <path
+                      d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z" />
+                  </svg>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- <div class="row">
+          <div class="col-sm-12 col-md-5">
+            <div class="dataTables_info" id="dtBasicExample_info" role="status" aria-live="polite">Showing 1 to 10 of 57
+              entries</div>
+          </div>
+          <div class="col-sm-12 col-md-7" >
+            <div class="dataTables_paginate paging_simple_numbers" id="dtBasicExample_paginate" >
+              <ul class="pagination" style="text-align: right;-webkit-box-pack: end; -webkit-justify-content: flex-end; -ms-flex-pack: end;justify-content: flex-end;">
+                <li class="paginate_button page-item previous disabled" id="dtBasicExample_previous"><a href="#"
+                    aria-controls="dtBasicExample" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+                <li class="paginate_button page-item active"><a href="#" aria-controls="dtBasicExample" data-dt-idx="1"
+                    tabindex="0" class="page-link">1</a></li>
+                <li class="paginate_button page-item "><a href="#" aria-controls="dtBasicExample" data-dt-idx="2"
+                    tabindex="0" class="page-link">2</a></li>
+                <li class="paginate_button page-item "><a href="#" aria-controls="dtBasicExample" data-dt-idx="3"
+                    tabindex="0" class="page-link">3</a></li>
+                <li class="paginate_button page-item "><a href="#" aria-controls="dtBasicExample" data-dt-idx="4"
+                    tabindex="0" class="page-link">4</a></li>
+                <li class="paginate_button page-item "><a href="#" aria-controls="dtBasicExample" data-dt-idx="5"
+                    tabindex="0" class="page-link">5</a></li>
+                <li class="paginate_button page-item "><a href="#" aria-controls="dtBasicExample" data-dt-idx="6"
+                    tabindex="0" class="page-link">6</a></li>
+                <li class="paginate_button page-item next" id="dtBasicExample_next"><a href="#"
+                    aria-controls="dtBasicExample" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
+              </ul>
+            </div>
+          </div>
+        </div> -->
+
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -331,7 +266,7 @@ export default {
       handler(newVal) {
         if (newVal.is_showed) {
           // this.$nextTick(() => {
-            this.drawChart()
+          this.drawChart()
           // })
         }
       },
@@ -418,7 +353,7 @@ export default {
         }
         console.log(this.data_show_result, "-----------data_show_result.fields--------")
         // this.$nextTick(() => {
-          this.redrawChart()
+        this.redrawChart()
         // })
       },
       deep: true,
@@ -460,7 +395,7 @@ export default {
       fixed_fields: [
         [
           { label: "Logs", logurl1: "logurl-1", logurl2: "logurl-5" }
-        ], 
+        ],
         [
           { key: "model", label: "Model" }
         ]
@@ -518,7 +453,7 @@ export default {
     })
 
     const searchText = ref('')
-  
+
     const filteredItems = computed(() => {
       const lowerCaseSearchText = searchText.value.toLowerCase();
       return data_show_result.items.filter(item => {
@@ -581,11 +516,11 @@ export default {
         echarts.registerTheme('roma', roma_json)
         myChart = echarts.init(chartRef.value, 'roma')
 
-      window.addEventListener('resize', function() {
-      if (myChart != null && myChart != undefined) {
-          myChart.resize();
-        }
-      });
+        window.addEventListener('resize', function () {
+          if (myChart != null && myChart != undefined) {
+            myChart.resize();
+          }
+        });
 
 
         // 设置图表横坐标
@@ -608,9 +543,9 @@ export default {
                 interval: 0,
               },
               axisLabel: {
-              interval: 0,
-              rotate: 270, // 设置标签旋转角度为270度
-            },
+                interval: 0,
+                rotate: 270, // 设置标签旋转角度为270度
+              },
               data: data_show_result.items.map((item) => item.model),
             },
           ],
@@ -711,7 +646,7 @@ export default {
       myChart.setOption(option, true);
     };
 
-    onMounted(() => {})
+    onMounted(() => { })
 
     return {
       data_show_result,

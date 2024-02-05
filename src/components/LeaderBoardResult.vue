@@ -169,7 +169,7 @@
       <div class="card model-result-show">
         <div class="card-body">
           <!-- <input v-model="searchText" placeholder="请输入搜索条件" /> -->
-          <table class="table">
+          <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
             <thead>
               <tr>
                 <th

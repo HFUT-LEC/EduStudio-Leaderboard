@@ -153,11 +153,17 @@
         </div>
         -->
       </div>
-      <div style="text-align: center;font-size: 20px;"> Sorted benchmarking results by {{ currentSortedKey }}</div>
-      <div
-        ref="chartRef"
-        style="width: 100%; height: 400px"
-      ></div>
+        <div class="row">
+          <div class="col-sm-12">
+          <div style="text-align: center;font-size: 20px;"> Sorted benchmarking results by {{ currentSortedKey }}</div>
+            <div
+              ref="chartRef"
+              style="width: 100%; height: 400px"
+            >
+          </div>
+        </div>
+      </div>
+      
       <!-- 数据表格展示 -->
       <h3 style="margin-top: 15px">Presentation of Models' Results</h3>
       <div class="card model-result-show">
@@ -558,12 +564,21 @@ export default {
     }
 
     const chartRef = ref(null)
+
     let myChart = null
     // 初始化
     const drawChart = () => {
       if (chartRef.value) {
         // 初始化图表
         myChart = echarts.init(chartRef.value)
+
+      window.addEventListener('resize', function() {
+      if (myChart != null && myChart != undefined) {
+          myChart.resize();
+        }
+      });
+
+
         // 设置图表横坐标
         // data_show_result.items.map(item => item.model)
         // 设置图表series组
@@ -719,6 +734,8 @@ export default {
     }
   },
 }
+
+
 </script>
 
 <style scoped>

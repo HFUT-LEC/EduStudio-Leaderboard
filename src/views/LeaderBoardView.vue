@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="container">
-      <h4>Welcome to the Results Presentation Leaderboard of Edustudio</h4>
+      <h4>Welcome to Result Presentation Leaderboard of Edustudio</h4>
       <p class="text-start hint-text">Please select Task supported by EduStudio. And then all results would be displayed.</p>
       <LeaderBoardSelect
         @refresh="refresh"

@@ -127,6 +127,11 @@ export default {
       required: true,
     },
   },
+
+  mounted() {
+      this.refresh()
+  },
+  
   setup(props, context) {
     // ref 响应式，也是默认值
     let selectedTask = ref("CognitiveDiagnosis");

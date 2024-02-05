@@ -83,7 +83,7 @@
         </div>
 
         <!-- 交叉验证 -->
-        <div>
+        <!-- <div>
           <div class="row check-all">
             <div class="col-auto om-col-auto-form-check">
               <div class="form-check">
@@ -113,7 +113,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <!-- 评估指标选择 -->
         <div>

@@ -5,18 +5,16 @@
   <div class="container">
 
     <header>
-
-      
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
   <!-- Container wrapper -->
   <div class="container-fluid">
     <!-- Toggle button -->
     <button
-      data-mdb-collapse-init
+    data-bs-toggle="collapse" 
       class="navbar-toggler"
       type="button"
-      data-mdb-target="#navbarSupportedContent"
+      data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent"
       aria-expanded="false"
       aria-label="Toggle navigation"
@@ -28,7 +26,7 @@
     <div class="navbar-collapse" id="navbarSupportedContent">
       <!-- Navbar brand -->
       <a class="navbar-brand mt-2 mt-lg-0" href="#">
-        <a class="nav-link" href="#"><i class="fa-solid fa-ranking-star" style="color: #74C0FC;"></i> &nbsp;EduStudio Leaderboard</a>
+        <a class="nav-link" href="#"><i class="fa-solid fa-ranking-star" style="color: #caa158;"></i> &nbsp;EduStudio Leaderboard</a>
         <!-- <img
           src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
           height="15"
@@ -38,23 +36,24 @@
       </a>
       <!-- Left links -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" href="https://edustudio.ai" target="_blank"><i class="fa-solid fa-link"></i> EduStudio</a>
+        <li class="nav-item mr-auto">
+          <a class="nav-link" href="https://edustudio.ai" target="_blank"><i class="fa-solid fa-external-link-square-alt"></i> EduStudio</a>
         </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link" href="#"></a>
-        </li>
+ 
+      </ul>
+
+      <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="#">Projects</a>
-        </li> -->
+          <a data-mdb-ripple-init class="btn btn-primary ml-auto" href="https://github.com/HFUT-LEC/EduStudio-Leaderboard" role="button" style="float: right; display: block;" target="_blank"> <i class="fab fa-github"></i> Github</a>
+        </li>
       </ul>
       <!-- Left links -->
     </div>
     <!-- Collapsible wrapper -->
 
-    <a data-mdb-ripple-init class="btn btn-primary ml-auto" href="https://github.com/HFUT-LEC/EduStudio-Leaderboard" role="button" style="float: right; display: block;" target="_blank"> <i class="fab fa-github"></i> Github</a>
-
+    
   </div>
+  
   <!-- Container wrapper -->
 </nav>
 <!-- Navbar -->
@@ -110,8 +109,8 @@
       <footer class="bg-body-tertiary text-center text-lg-start mt-2">
   <!-- Copyright -->
   <div class="text-center p-3">
-    © 2020 Copyright:
-    <a class="text-body" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    © 2023 Copyright:
+    <a class="text-body" href="https://edustudio.ai">EduStudio</a>
   </div>
   <!-- Copyright -->
 </footer>

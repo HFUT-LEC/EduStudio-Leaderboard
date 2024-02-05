@@ -1,7 +1,8 @@
 <template>
   <div class="row select-row">
-    <div class="col col-auto left-select">
-      <button type="button" class="btn btn-success responsive-text" data-bs-toggle="modal" data-bs-target="#selectModal">
+    <div class="col-auto left-select">
+      <button type="button" class="btn btn-success responsive-text" data-bs-toggle="modal" data-bs-target="#selectModal"
+        style="font-size: 0.9rem;">
         Task Select
       </button>
       <div class="modal fade" id="selectModal" tabindex="-1" aria-labelledby="selectModalLabel" aria-hidden="true">
@@ -9,7 +10,7 @@
           <div class="modal-content">
             <div class="modal-header-part">
               <p class="modal-header-title-name" id="selectModalLabel">
-                Please select specific task and operation.
+                Please select task and dataset.
               </p>
             </div>
             <div class="modal-body">
@@ -63,33 +64,6 @@
                   </div>
                 </div>
               </div>
-              <!-- <div class="card">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-2">Application:</div>
-                    <div class="col-10" v-if="selectedTask == 'CognitiveDiagnosis'">
-                      <div class="form-check form-check-inline" v-for="apply in application_show.CognitiveDiagnosis"
-                        :key="apply">
-                        <input class="form-check-input" type="radio" name="applyRadio" :id=apply :value=apply
-                          v-model="selectedApplication" />
-                        <label class="form-check-label" :for=apply>
-                          {{ apply }}
-                        </label>
-                      </div>
-                    </div>
-                    <div class="col-10" v-if="selectedTask == 'KnowledgeTracing'">
-                      <div class="form-check form-check-inline" v-for="apply in application_show.KnowledgeTracing"
-                        :key="apply">
-                        <input class="form-check-input" type="radio" name="applyRadio" :id=apply :value=apply
-                          v-model="selectedApplication" />
-                        <label class="form-check-label" :for=apply>
-                          {{ apply }}
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
@@ -103,10 +77,10 @@
         </div>
       </div>
     </div>
-    <div class="col-sm right-show-content">
+    <div class="col right-show-content">
       <div v-if="showContext.is_showed" class="card right-card-show">
         <div class="card-body right-card-body-show">
-          <p class="right-card-body-show-content">
+          <p class="right-card-body-show-content" style="font-size: 1rem;">
             <!-- Task: {{ showContext.task }} | Dataset: {{ showContext.dataset }} | Application: {{ showContext.application }} -->
             Task: {{ showContext.task }} | Dataset: {{ showContext.dataset }}
           </p>
@@ -129,9 +103,9 @@ export default {
   },
 
   mounted() {
-      this.refresh()
+    this.refresh()
   },
-  
+
   setup(props, context) {
     // ref 响应式，也是默认值
     let selectedTask = ref("CognitiveDiagnosis");

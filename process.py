@@ -68,7 +68,7 @@ def log2json():
         applicationID = 1 if model in applicationInfo['GeneralModels'] else 2
         applicationName = "General" if applicationID == 1 else "KnowledgeMissing"
         # 提取该日志中的指标信息和日志信息
-        logurl = f"https://github.com/Chuckie-XC1028/EduStudioData/blob/main/{logdir.lstrip('./')}"
+        logurl = f"https://github.com/HFUT-LEC/EduStudio-Leaderboard/blob/backend/{logdir.lstrip('./')}"
         # 将数据存放对应的json文件
         resultStore = f"result_{taskID * 100 + datasetID * 10 + applicationID}"  # 获取结果存放信息
         ## 创建对应的存储json文件以及基础配置信息

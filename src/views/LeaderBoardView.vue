@@ -1,12 +1,93 @@
 <template>
   <div class="home">
-    <div class="container">
-      <h4>Welcome to Result Presentation Leaderboard of Edustudio</h4>
-      <p class="text-start hint-text">Please select Task supported by EduStudio. And then all results would be displayed.</p>
+      <header>
+  <!-- Navbar -->
+  <div class="container">
+
+    <header>
+
+      
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
+  <!-- Container wrapper -->
+  <div class="container-fluid">
+    <!-- Toggle button -->
+    <button
+      data-mdb-collapse-init
+      class="navbar-toggler"
+      type="button"
+      data-mdb-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div class="navbar-collapse" id="navbarSupportedContent">
+      <!-- Navbar brand -->
+      <a class="navbar-brand mt-2 mt-lg-0" href="#">
+        <a class="nav-link" href="#"><i class="fa-solid fa-ranking-star" style="color: #74C0FC;"></i> &nbsp;EduStudio Leaderboard</a>
+        <!-- <img
+          src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
+          height="15"
+          alt="MDB Logo"
+          loading="lazy"
+        /> -->
+      </a>
+      <!-- Left links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="https://edustudio.ai" target="_blank"><i class="fa-solid fa-link"></i> EduStudio</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="#"></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Projects</a>
+        </li> -->
+      </ul>
+      <!-- Left links -->
+    </div>
+    <!-- Collapsible wrapper -->
+
+    <a data-mdb-ripple-init class="btn btn-primary ml-auto" href="https://github.com/HFUT-LEC/EduStudio-Leaderboard" role="button" style="float: right; display: block;" target="_blank"> <i class="fab fa-github"></i> Github</a>
+
+  </div>
+  <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->
+  <!-- Jumbotron -->
+  <!-- <div class="p-3 text-center bg-body-tertiary">
+    <h3 class="mb-3" style="display: inline;">Welcome to EduStudio Leaderboard</h3>
+    <a data-mdb-ripple-init class="btn btn-primary ml-auto" href="https://github.com/HFUT-LEC/EduStudio-Leaderboard" role="button" style="float: right; display: block;" target="_blank"> <i class="fab fa-github"></i> Github</a>
+  </div> -->
+  <!-- Jumbotron -->
+</header>
+  
+
+  <!-- Jumbotron -->
+
+  <!-- Jumbotron -->
+</div>
+
+</header>
+
+
+<div class="container">
+  <div class="card-body card card-result-home">  
+
+  <div class="mt-3 ">
+    <!-- <h1 class="mb-3">Heading</h1>
+    <h4 class="mb-3">Subheading</h4> -->
+    <!-- <h4>Welcome to Result Presentation Leaderboard of Edustudio</h4> -->
+      <!-- <p class="text-start hint-text">Please select Task supported by EduStudio. And then all results would be displayed.</p> -->
       <LeaderBoardSelect
         @refresh="refresh"
         :showContext="showContext"
       />
+  </div>
       <LeaderBoardResult
         @metric_selectAll="metric_selectAll"
         @metric_selectPart="metric_selectPart"
@@ -26,14 +107,27 @@
         :metric_state_father="metric_state_father"
       />
     </div>
+      <footer class="bg-body-tertiary text-center text-lg-start mt-2">
+  <!-- Copyright -->
+  <div class="text-center p-3">
+    © 2020 Copyright:
+    <a class="text-body" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+    </div>
+    
+
   </div>
 </template>
+
 
 <script>
 import LeaderBoardSelect from "@/components/LeaderBoardSelect"
 import LeaderBoardResult from "@/components/LeaderBoardResult"
 import $ from "jquery"
 import { reactive, computed, inject } from "vue"
+// import 'bootstrap/dist/js/bootstrap.js';
 
 export default {
   name: "LeaderBoardView",

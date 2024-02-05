@@ -1,11 +1,12 @@
 <template>
+  
   <div
     v-if="dataInfo.is_showed"
-    class="card card-result-home"
   >
-    <div class="card-body">
+  
+    
       <!-- 操作选择 -->
-      <h3>Listed Operations and Metrics</h3>
+      <h3 class="mt-3">Listed Operations and Metrics</h3>
       <div class="om-select-list">
         <!-- 模型选择 -->
         <div>
@@ -165,9 +166,9 @@
       </div>
       
       <!-- 数据表格展示 -->
-      <h3 style="margin-top: 15px">Presentation of Models' Results</h3>
-      <div class="card model-result-show">
-        <div class="card-body">
+      <!-- <h3 style="margin-top: 15px">Presentation of Models' Results</h3> -->
+      <div >
+        <div class="mt-3">
           <!-- <input v-model="searchText" placeholder="请输入搜索条件" /> -->
           <table id="dtBasicExample" class="table table-bordered table-sm table-hover" cellspacing="0" width="100%" style="font-size: 16px; text-align: center;">
             <thead >
@@ -297,7 +298,7 @@
         </div>
       </div>
     </div>
-  </div>
+
 </template>
 
 <script>

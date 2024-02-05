@@ -127,12 +127,12 @@ export default {
     }
 
     // 进行数据请求操作
-    const refresh = async (selectedTask, selectedDataset, selectedApplication) => {
+    const refresh = async (selectedTask, selectedDataset) => {
       showContext.is_showed = true // 标志，是否展示数据部分的操作
       dataInfo.is_showed = true // 标志，是否展示数据展示操作部分
       showContext.task = selectedTask
       showContext.dataset = selectedDataset
-      showContext.application = selectedApplication
+      showContext.application = "General"
       // console.log(showContext.task, showContext.dataset, showContext.application);
       // 读取远程数据
       let optResult = computed(() => showContext.taskID[showContext.task] * 100 + showContext.datasetID[showContext.dataset] * 10 + showContext.applicationID[showContext.application])

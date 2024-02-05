@@ -131,7 +131,6 @@ export default {
     // ref 响应式，也是默认值
     let selectedTask = ref("CognitiveDiagnosis");
     let selectedDataset = ref("FrcSub");
-    let selectedApplication = ref("General");
     // 维护: 依据任务需求在此处进行数据集重选择
     const dataset_show = reactive({
       CognitiveDiagnosis: ['FrcSub', 'ASSISTment0910'],
@@ -142,26 +141,23 @@ export default {
       CognitiveDiagnosis: ['General',],
       KnowledgeTracing: ['General',]
     });
-    // 监听器, 监听selectedTask的变化, 且在回调函数中根据selectedTask的值来更新selectedDataset和selectedApplication的值
+    // 监听器, 监听selectedTask的变化, 且在回调函数中根据selectedTask的值来更新selectedDataset的值
     watch(selectedTask, (newValue) => {
       if (newValue == "CognitiveDiagnosis") {
         selectedDataset.value = "";
-        selectedApplication.value = "";
       }
       else if (newValue == "KnowledgeTracing") {
         selectedDataset.value = "";
-        selectedApplication.value = "";
       }
     });
 
     const refresh = () => {
-      context.emit("refresh", selectedTask.value, selectedDataset.value, selectedApplication.value);
+      context.emit("refresh", selectedTask.value, selectedDataset.value);
     };
 
     return {
       selectedTask,
       selectedDataset,
-      selectedApplication,
       dataset_show,
       application_show,
       refresh,

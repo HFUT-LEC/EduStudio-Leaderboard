@@ -63,7 +63,7 @@
                   </div>
                 </div>
               </div>
-              <div class="card">
+              <!-- <div class="card">
                 <div class="card-body">
                   <div class="row">
                     <div class="col-2">Application:</div>
@@ -89,7 +89,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
@@ -107,7 +107,8 @@
       <div v-if="showContext.is_showed" class="card right-card-show">
         <div class="card-body right-card-body-show">
           <p class="right-card-body-show-content">
-            Task: {{ showContext.task }} | Dataset: {{ showContext.dataset }} | Application: {{ showContext.application }}
+            <!-- Task: {{ showContext.task }} | Dataset: {{ showContext.dataset }} | Application: {{ showContext.application }} -->
+            Task: {{ showContext.task }} | Dataset: {{ showContext.dataset }}
           </p>
         </div>
       </div>

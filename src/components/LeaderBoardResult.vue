@@ -169,20 +169,20 @@
       <div class="card model-result-show">
         <div class="card-body">
           <!-- <input v-model="searchText" placeholder="请输入搜索条件" /> -->
-          <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
-            <thead>
+          <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%" style="font-size: 16px; text-align: center;">
+            <thead >
               <tr>
                 <th
                   v-for="field in data_show_result.fixed_fields[1]"
-                  :key="field.key"
+                  :key="field.key" style="font-weight: bold;"
                 >
                   {{ field.label }}
                 </th>
                 <th
                   v-for="field in data_show_result.fields"
-                  :key="field.key"
+                  :key="field.key" style="font-weight: bold;"
                 >
-                  <div style="display: flex; align-items: center; gap: 10px">
+                  <div style="align-items: center; gap: 10px">
                     {{ field.label }}
                     <svg
                       @click="sortBy(field.key)"
@@ -225,7 +225,7 @@
                 </th>
                 <th
                   v-for="field in data_show_result.fixed_fields[0]"
-                  :key="field.key"
+                  :key="field.key" style="font-weight: bold;"
                 >
                   {{ field.label }}
                 </th>

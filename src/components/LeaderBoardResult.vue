@@ -186,6 +186,7 @@
                     {{ field.label }}
                     <svg
                       @click="sortBy(field.key)"
+                      :id=field.key
                       v-if="!data_show_result.sortIcons[field.key]"
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
@@ -423,6 +424,10 @@ export default {
     sortedItems: {
       handler(value) {
         console.log(value, "-----------sortedItems--------")
+        if (this.isFirstSort) {
+          this.sortBy('auc-1')
+          this.isFirstSort = false
+        }
         this.redrawChart()
       },
       deep: true,
@@ -731,6 +736,7 @@ export default {
       chartRef,
       drawChart,
       redrawChart,
+      isFirstSort: true
     }
   },
 }

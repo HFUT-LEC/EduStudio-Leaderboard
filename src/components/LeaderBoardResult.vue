@@ -426,6 +426,7 @@ export default {
         console.log(value, "-----------sortedItems--------")
         if (this.isFirstSort) {
           this.sortBy('auc-1')
+          this.sortBy('auc-1')
           this.isFirstSort = false
         }
         this.redrawChart()

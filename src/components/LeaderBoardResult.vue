@@ -155,7 +155,7 @@
       </div>
         <div class="row">
           <div class="col-sm-12">
-          <div style="text-align: center;font-size: 20px;"> Sorted benchmarking results by {{ currentSortedKey }}</div>
+          <div style="text-align: center;font-size: 20px;"> Sorted by {{ currentSortedKey }}</div>
             <div
               ref="chartRef"
               style="width: 100%; height: 400px"
@@ -169,7 +169,7 @@
       <div class="card model-result-show">
         <div class="card-body">
           <!-- <input v-model="searchText" placeholder="请输入搜索条件" /> -->
-          <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%" style="font-size: 16px; text-align: center;">
+          <table id="dtBasicExample" class="table table-bordered table-sm table-hover" cellspacing="0" width="100%" style="font-size: 16px; text-align: center;">
             <thead >
               <tr>
                 <th
@@ -303,6 +303,7 @@
 <script>
 import { reactive, ref, onMounted, computed, watch, provide } from "vue"
 import * as echarts from "echarts"
+import roma_json from './roma.json'
 export default {
   name: "LeaderBoardResult",
   props: {
@@ -576,7 +577,8 @@ export default {
     const drawChart = () => {
       if (chartRef.value) {
         // 初始化图表
-        myChart = echarts.init(chartRef.value)
+        echarts.registerTheme('roma', roma_json)
+        myChart = echarts.init(chartRef.value, 'roma')
 
       window.addEventListener('resize', function() {
       if (myChart != null && myChart != undefined) {
@@ -638,7 +640,7 @@ export default {
           seriesList.push({
             name: item.label,
             type: "line",
-            smooth: false,
+            smooth: true,
             data: sortedItems.value.map((ifem) => ifem[item.key]),
           });
         });

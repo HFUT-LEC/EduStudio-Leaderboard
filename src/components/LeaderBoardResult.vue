@@ -303,11 +303,11 @@ export default {
         for (let midx = 0; midx < sortedmetric.value.length; midx++) {
           let fnum = computed(() => sortedmetric.value[midx] * 10 + this.fold_state.selct)
           if (fnum.value == 2111) {
-            this.addColField("auc-1", "AUC-1")
+            this.addColField("auc", "AUC")
           } else if (fnum.value == 2121) {
-            this.addColField("rmse-1", "RMSE-1")
+            this.addColField("rmse", "RMSE")
           } else if (fnum.value == 2131) {
-            this.addColField("acc-1", "ACC-1")
+            this.addColField("acc", "ACC")
           } else if (fnum.value == 2112) {
             this.addColField("auc-5", "AUC-5")
           } else if (fnum.value == 2122) {
@@ -338,15 +338,15 @@ export default {
           }
           let fnum = computed(() => sortedmetric.value[midx] * 10 + this.fold_state.selct)
           if (fnum.value == 2111) {
-            this.addColField("auc-1", "AUC-1")
+            this.addColField("auc", "AUC")
           } else if (fnum.value == 2112) {
             this.addColField("auc-5", "AUC-5")
           } else if (fnum.value == 2121) {
-            this.addColField("rmse-1", "RMSE-1")
+            this.addColField("rmse", "RMSE")
           } else if (fnum.value == 2122) {
             this.addColField("rmse-5", "RMSE-5")
           } else if (fnum.value == 2131) {
-            this.addColField("acc-1", "ACC-1")
+            this.addColField("acc", "ACC")
           } else if (fnum.value == 2132) {
             this.addColField("acc-5", "ACC-5")
           }
@@ -362,8 +362,8 @@ export default {
       handler(value) {
         console.log(value, "-----------sortedItems--------")
         if (this.isFirstSort) {
-          this.sortBy('auc-1')
-          this.sortBy('auc-1')
+          this.sortBy('auc')
+          this.sortBy('auc')
           this.isFirstSort = false
         }
         this.redrawChart()
@@ -390,8 +390,8 @@ export default {
   setup(props, context) {
     const data_show_result = reactive({
       sortedKey: "",
-      sortOrders: { "auc-1": 1, "rmse-1": 1, "acc-1": 1, "auc-5": 1, "rmse-5": 1, "acc-5": 1 },
-      sortIcons: { "auc-1": 0, "rmse-1": 0, "acc-1": 0, "auc-5": 0, "rmse-5": 0, "acc-5": 0 },
+      sortOrders: { "auc": 1, "rmse": 1, "acc": 1, "auc-5": 1, "rmse-5": 1, "acc-5": 1 },
+      sortIcons: { "auc": 0, "rmse": 0, "acc": 0, "auc-5": 0, "rmse-5": 0, "acc-5": 0 },
       fixed_fields: [
         [
           { label: "Logs", logurl1: "logurl-1", logurl2: "logurl-5" }

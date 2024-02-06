@@ -138,7 +138,13 @@
           style="font-size: 16px; text-align: center;">
           <thead>
             <tr>
+              <th v-for="field in data_show_result.fixed_fields[0]" :key="field.key" style="font-weight: bold;">
+                {{ field.label }}
+              </th>
               <th v-for="field in data_show_result.fixed_fields[1]" :key="field.key" style="font-weight: bold;">
+                {{ field.label }}
+              </th>
+              <th v-for="field in data_show_result.fixed_fields[3]" :key="field.key" style="font-weight: bold;">
                 {{ field.label }}
               </th>
               <th v-for="field in data_show_result.fields" :key="field.key" style="font-weight: bold;">
@@ -166,20 +172,26 @@
                   </svg>
                 </div>
               </th>
-              <th v-for="field in data_show_result.fixed_fields[0]" :key="field.key" style="font-weight: bold;">
+              <th v-for="field in data_show_result.fixed_fields[2]" :key="field.key" style="font-weight: bold;">
                 {{ field.label }}
               </th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="item in sortedItems" :key="item.id">
+              <td v-for="field in data_show_result.fixed_fields[0]" :key="field.key">
+                {{ item[field.key] }}
+              </td>
               <td v-for="field in data_show_result.fixed_fields[1]" :key="field.key">
                 {{ item[field.key] }}
               </td>
-              <td v-for="field in data_show_result.fields" :key="field.key">
-                {{ item[field.key] }}
+              <td v-for="field in data_show_result.fixed_fields[3]" :key="field.key">
+                <a :href="item[field.url]" target="_blank">{{ item[field.key] }}</a>
               </td>
-              <td v-for="field in data_show_result.fixed_fields[0]" :key="field.key">
+              <td v-for="field in data_show_result.fields" :key="field.key">
+                {{ numberFormat(item[field.key],4) }}
+              </td>
+              <td v-for="field in data_show_result.fixed_fields[2]" :key="field.key">
                 <a :href="getTruncatedUrl(item[field.logurl1])" target="_blank" v-if="fold_state.selct == 101">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear"
                     viewBox="0 0 16 16">
@@ -387,6 +399,14 @@ export default {
       };
     },
   },
+  methods: {
+    numberFormat(value, decimalPlaces) {
+      if (value || value === 0) {
+        return Number(value).toFixed(decimalPlaces);
+      }
+      return '';
+    }
+  },
   setup(props, context) {
     const data_show_result = reactive({
       sortedKey: "",
@@ -394,11 +414,17 @@ export default {
       sortIcons: { "auc": 0, "rmse": 0, "acc": 0, "auc-5": 0, "rmse-5": 0, "acc-5": 0 },
       fixed_fields: [
         [
+          { label: "Year", key: "Year" }
+        ],
+        [
+          { label: "Publish", key: "Publish"}
+        ],
+        [
           { label: "Logs", logurl1: "logurl-1", logurl2: "logurl-5" }
         ],
         [
-          { key: "model", label: "Model" }
-        ]
+          { key: "model", label: "Model", url: "paper_url" }
+        ],
       ],
       fields: [],
       items: [], // 确定显示的模型

@@ -1,0 +1,102 @@
+{
+    "IRT": {
+        "paper_url": "https://books.google.com.vn/books?hl=en&amp;lr=&amp;id=9Xm0AAAAQBAJ&amp;oi=fnd&amp;pg=PR1&amp;dq=Susan+E+Embretson+and+Steven+P+Reise.+Item+response+theory.+Psychology+Press,+2013.&amp;ots=Ec6T_xMUYp&amp;sig=uaOHLgo1b22uN_tUNtO6F6Y6h18&amp;redir_esc=y#v=onepage&amp;q=Susan%20E%20Embretson%20and%20Steven%20P%20Reise.%20Item%20response%20theory.%20Psychology%20Press%2C%202013.&amp;f=false",
+        "Publish": "-",
+        "Year": "1960"
+    },
+    "MIRT": {
+        "paper_url": "https://www.amazon.com/Multidimensional-Response-Statistics-Behavioral-Sciences/dp/0387899758",
+        "Publish": "-",
+        "Year": "1982"
+    },
+    "DINA": {
+        "paper_url": "https://journals.sagepub.com/doi/10.3102/1076998607309474",
+        "Publish": "JEBS",
+        "Year": "2009"
+    },
+    "NCDM": {
+        "paper_url": "https://ojs.aaai.org/index.php/AAAI/article/view/6080/5936",
+        "Publish": "AAAI",
+        "Year": "2020"
+    }, 
+    "KSCD": {
+        "paper_url": "https://dl.acm.org/doi/abs/10.1145/3511808.3557372",
+        "Publish": "CIKM",
+        "Year": "2022"
+    }, 
+    "CDMFKC": {
+        "paper_url": "https://dl.acm.org/doi/10.1145/3511808.3557096",
+        "Publish": "CIKM",
+        "Year": "2022"
+    }, 
+    "CDGK_MULTI": {
+        "paper_url": "https://dl.acm.org/doi/abs/10.1145/3459637.3482311",
+        "Publish": "CIKM",
+        "Year": "2021"
+    }, 
+    "MGCD": {
+        "paper_url": "https://ieeexplore.ieee.org/document/9679064/",
+        "Publish": "ICDM",
+        "Year": "2021"
+    }, 
+    "KaNCD": {
+        "paper_url": "https://ieeexplore.ieee.org/document/9865139/",
+        "Publish": "TKDE",
+        "Year": "2022"
+    },
+    "SKVMN": {
+        "paper_url": "https://dl.acm.org/doi/10.1145/3331184.3331195",
+        "Publish": "SIGIR",
+        "Year": "2019"
+    }, 
+    "SimpleKT": {
+        "paper_url": "https://arxiv.org/abs/2302.06881",
+        "Publish": "ICLR",
+        "Year": "2023"
+    }, 
+    "SAKT": {
+        "paper_url": "https://experts.umn.edu/en/publications/a-self-attentive-model-for-knowledge-tracing",
+        "Publish": "EDM",
+        "Year": "2019"
+    }, 
+    "SAINT_plus": {
+        "paper_url": "https://dl.acm.org/doi/10.1145/3448139.3448188",
+        "Publish": "LAK",
+        "Year": "2021"
+    }, 
+    "SAINT": {
+        "paper_url": "https://dl.acm.org/doi/10.1145/3386527.3405945",
+        "Publish": "L@S",
+        "Year": "2020"
+    }, 
+    "RKT": {
+        "paper_url": "https://arxiv.org/pdf/2008.12736.pdf",
+        "Publish": "CIKM",
+        "Year": "2020"
+    }, 
+    "QIKT": {
+        "paper_url": "https://arxiv.org/abs/2302.06885",
+        "Publish": "AAAI",
+        "Year": "2023"
+    }, 
+    "KQN": {
+        "paper_url": "https://dl.acm.org/doi/abs/10.1145/3303772.3303786",
+        "Publish": "LAK",
+        "Year": "2019"
+    }, 
+    "IEKT": {
+        "paper_url": "https://dl.acm.org/doi/10.1145/3404835.3462827",
+        "Publish": "SIGIR",
+        "Year": "2021"
+    }, 
+    "DKT_plus": {
+        "paper_url": "https://arxiv.org/pdf/1806.02180.pdf",
+        "Publish": "L@S",
+        "Year": "2018"
+    }, 
+    "DKT": {
+        "paper_url": "https://proceedings.neurips.cc/paper_files/paper/2015/hash/bac9162b47c56fc8a4d2a519803d51b3-Abstract.html",
+        "Publish": "NeurIPS",
+        "Year": "2015"
+    }
+}

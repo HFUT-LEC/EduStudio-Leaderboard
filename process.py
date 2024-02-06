@@ -9,6 +9,10 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/../")
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 
+with open("./model2info.json") as f:
+    model2info = json.load(f)
+
+
 def log2json():
     log_dir = f'./logs'
 
@@ -28,17 +32,18 @@ def log2json():
     result = {}  # 存放不同的json文件, 其中key为分类名, value中是该分类对应的结果
     taskInfo = {
         'CDModels': ['KaNCD', 'CDMFKC', 'DINA', 'MGCD', 'NCDM', 'CDGK_MULTI', 'MIRT', 'KSCD', 'IRT'],
-        'KTModels': ['DKT_plus', 'SAKT', 'LPKT', 'SKVMN', 'LPKT_S', 'KQN', 'DKTDSC', 'DKT', 'RKT', 'IEKT', 'SAINT_plus',
-                     'HawkesKT', 'QIKT', 'SAINT', 'SimpleKT']
+        'KTModels': ['DKT_plus', 'SAKT',  'SKVMN',  'KQN' , 'DKT', 'RKT', 'IEKT', 'SAINT_plus',
+                      'QIKT', 'SAINT', 'SimpleKT']
     }
     datasetInfo = {'FrcSub': 1, 'ASSIST_0910': 2}
     applicationInfo = {
         # 有待确认
         'GeneralModels': ['KaNCD', 'CDMFKC', 'DINA', 'MGCD', 'NCDM', 'CDGK_MULTI', 'MIRT', 'KSCD', 'IRT',
-                          'DKT_plus', 'SAKT', 'LPKT', 'SKVMN', 'LPKT_S', 'KQN', 'DKTDSC', 'DKT', 'RKT', 'IEKT',
-                          'SAINT_plus', 'HawkesKT', 'QIKT', 'SAINT', 'SimpleKT'
+                          'DKT_plus', 'SAKT',  'SKVMN',  'KQN', 'DKT', 'RKT', 'IEKT',
+                          'SAINT_plus', 'QIKT', 'SAINT', 'SimpleKT'
                           ]
     }
+    model_set = taskInfo['CDModels'] + taskInfo['KTModels']
     # 从日志和配置信息中获取"数据集和模型"信息:
     for logdir, cfgdir in zip(logInfos_path, cfgInfos_path):
         dataset, model, fold = None, None, None
@@ -61,9 +66,12 @@ def log2json():
             data = json.loads(cfg.read())
             model = data['modeltpl_cfg']['cls']  # 获取模型名称信息
             fold = data['datatpl_cfg']['n_folds']  # 获取多折信息
+        if model not in model_set: 
+            print(f"ignore model: {model}")
+            continue
         # 获取日志信息对应的任务、数据集和场景分类
         taskID = 1 if model in taskInfo['CDModels'] else 2
-        taskName = "CognitiveDiagnosis" if taskID == 1 else "KnowledgeTrace"
+        taskName = "Cognitive Diagnosis" if taskID == 1 else "Knowledge Tracing"
         datasetID = datasetInfo[dataset]
         applicationID = 1 if model in applicationInfo['GeneralModels'] else 2
         applicationName = "General" if applicationID == 1 else "KnowledgeMissing"
@@ -81,7 +89,11 @@ def log2json():
                 curid = result[resultStore]["num"]
                 result[resultStore]["num"] = curid + 1  # 模型数量+1
                 tmp_dict = {"id": curid + 1, "model": model, "auc": 0, "rmse": 0, "acc": 0, "auc-5": 0,
-                            "rmse-5": 0, "acc-5": 0, "logurl-1": "", "logurl-5": ""}
+                            "rmse-5": 0, "acc-5": 0, "logurl-1": "", "logurl-5": "",
+                            "paper_url": model2info[model]['paper_url'],
+                            "Publish": model2info[model]['Publish'],
+                            "Year": model2info[model]['Year']
+                            }
                 result[resultStore]["data"].append(tmp_dict)
         else:
             result[resultStore] = {
@@ -101,7 +113,10 @@ def log2json():
                         "rmse-5": 0,
                         "acc-5": 0,
                         "logurl-1": "",
-                        "logurl-5": ""
+                        "logurl-5": "",
+                        "paper_url": "#",
+                        "Publish": "-",
+                        "Year": "-"
                     }
                 ]
             }

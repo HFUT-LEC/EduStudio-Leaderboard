@@ -99,7 +99,7 @@
         -->
     </div>
     <div class="row">
-      <div class="col-sm-12">
+      <div class="col-sm-12 mt-1">
         <div style="text-align: center;font-size: 20px;"> Sorted by {{ currentSortedKey }}</div>
         <div ref="chartRef" style="width: 100%; height: 400px">
         </div>

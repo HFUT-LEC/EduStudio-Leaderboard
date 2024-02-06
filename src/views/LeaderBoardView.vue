@@ -26,7 +26,7 @@
     <div class="navbar-collapse" id="navbarSupportedContent">
       <!-- Navbar brand -->
       <a class="navbar-brand mt-2 mt-lg-0" href="#">
-        <a class="nav-link" href="#"><i class="fa-solid fa-ranking-star" style="color: #caa158;"></i> &nbsp;EduStudio Leaderboard</a>
+        <a class="nav-link" href="/"><i class="fa-solid fa-ranking-star" style="color: #caa158;"></i> &nbsp;EduStudio Leaderboard</a>
         <!-- <img
           src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
           height="15"
@@ -37,9 +37,11 @@
       <!-- Left links -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item mr-auto">
-          <a class="nav-link" href="https://edustudio.ai" target="_blank"><i class="fa-solid fa-external-link-square-alt"></i> EduStudio</a>
+          <a class="nav-link" href="https://github.com/HFUT-LEC/EduStudio" target="_blank"><i class="fa-solid fa-external-link-square-alt"></i> EduStudio</a>
         </li>
- 
+        <li class="nav-item mr-auto">
+          <a class="nav-link" href="https://github.com/HFUT-LEC/awesome-student-cognitive-modeling" target="_blank"><i class="fab fa-github"></i> Eco-Repository</a>
+        </li>
       </ul>
 
       <ul class="navbar-nav">

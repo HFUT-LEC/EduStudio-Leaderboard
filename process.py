@@ -31,14 +31,14 @@ def log2json():
 
     result = {}  # 存放不同的json文件, 其中key为分类名, value中是该分类对应的结果
     taskInfo = {
-        'CDModels': ['KaNCD', 'CDMFKC', 'DINA', 'MGCD', 'NCDM', 'CDGK_MULTI', 'MIRT', 'KSCD', 'IRT'],
+        'CDModels': ['KaNCD', 'CDMFKC', 'DINA', 'NCDM',  'MIRT', 'KSCD', 'IRT'],
         'KTModels': ['DKT_plus', 'SAKT',  'SKVMN',  'KQN' , 'DKT', 'RKT', 'IEKT', 'SAINT_plus',
                       'QIKT', 'SAINT', 'SimpleKT']
     }
     datasetInfo = {'FrcSub': 1, 'ASSIST_0910': 2}
     applicationInfo = {
         # 有待确认
-        'GeneralModels': ['KaNCD', 'CDMFKC', 'DINA', 'MGCD', 'NCDM', 'CDGK_MULTI', 'MIRT', 'KSCD', 'IRT',
+        'GeneralModels': ['KaNCD', 'CDMFKC', 'DINA',  'NCDM',  'MIRT', 'KSCD', 'IRT',
                           'DKT_plus', 'SAKT',  'SKVMN',  'KQN', 'DKT', 'RKT', 'IEKT',
                           'SAINT_plus', 'QIKT', 'SAINT', 'SimpleKT'
                           ]

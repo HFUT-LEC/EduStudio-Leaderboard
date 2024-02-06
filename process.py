@@ -80,7 +80,7 @@ def log2json():
             if not modelExistCheck:  # 说明此时json文件中未增加该model
                 curid = result[resultStore]["num"]
                 result[resultStore]["num"] = curid + 1  # 模型数量+1
-                tmp_dict = {"id": curid + 1, "model": model, "auc-1": 0, "rmse-1": 0, "acc-1": 0, "auc-5": 0,
+                tmp_dict = {"id": curid + 1, "model": model, "auc": 0, "rmse": 0, "acc": 0, "auc-5": 0,
                             "rmse-5": 0, "acc-5": 0, "logurl-1": "", "logurl-5": ""}
                 result[resultStore]["data"].append(tmp_dict)
         else:
@@ -94,9 +94,9 @@ def log2json():
                     {
                         "id": 1,
                         "model": model,
-                        "auc-1": 0,
-                        "rmse-1": 0,
-                        "acc-1": 0,
+                        "auc": 0,
+                        "rmse": 0,
+                        "acc": 0,
                         "auc-5": 0,
                         "rmse-5": 0,
                         "acc-5": 0,
@@ -109,9 +109,9 @@ def log2json():
         if fold == 1:
             for idx, data_dict in enumerate(result[resultStore]['data']):
                 if model in data_dict.values():
-                    result[resultStore]["data"][idx]['auc-1'] = auc
-                    result[resultStore]["data"][idx]['rmse-1'] = rmse
-                    result[resultStore]["data"][idx]['acc-1'] = acc
+                    result[resultStore]["data"][idx]['auc'] = auc
+                    result[resultStore]["data"][idx]['rmse'] = rmse
+                    result[resultStore]["data"][idx]['acc'] = acc
                     result[resultStore]["data"][idx]['logurl-1'] = logurl
         if fold == 5:
             for idx, data_dict in enumerate(result[resultStore]['data']):

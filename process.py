@@ -114,9 +114,9 @@ def log2json():
                         "acc-5": 0,
                         "logurl-1": "",
                         "logurl-5": "",
-                        "paper_url": "#",
-                        "Publish": "-",
-                        "Year": "-"
+                        "paper_url": model2info[model]['paper_url'],
+                        "Publish": model2info[model]['Publish'],
+                        "Year": model2info[model]['Year']
                     }
                 ]
             }

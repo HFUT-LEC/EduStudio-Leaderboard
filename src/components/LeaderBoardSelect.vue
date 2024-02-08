@@ -21,14 +21,14 @@
                     <div class="col-10">
                       <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="taskRadio" id="taskRadio1"
-                          value="CognitiveDiagnosis" v-model="selectedTask" />
+                          value="Cognitive Diagnosis" v-model="selectedTask" />
                         <label class="form-check-label" for="taskRadio1">
                           Cognitive Diagnosis
                         </label>
                       </div>
                       <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="taskRadio" id="taskRadio2"
-                          value="KnowledgeTracing" v-model="selectedTask" />
+                          value="Knowledge Tracing" v-model="selectedTask" />
                         <label class="form-check-label" for="taskRadio2">
                           Knowledge Tracing
                         </label>
@@ -41,7 +41,7 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col-2">Dataset:</div>
-                    <div class="col-10" v-if="selectedTask == 'CognitiveDiagnosis'">
+                    <div class="col-10" v-if="selectedTask == 'Cognitive Diagnosis'">
                       <div class="form-check form-check-inline" v-for="datset in dataset_show.CognitiveDiagnosis"
                         :key="datset">
                         <input class="form-check-input" type="radio" name="datasetRadio" :id=datset :value=datset
@@ -51,7 +51,7 @@
                         </label>
                       </div>
                     </div>
-                    <div class="col-10" v-if="selectedTask == 'KnowledgeTracing'">
+                    <div class="col-10" v-if="selectedTask == 'Knowledge Tracing'">
                       <div class="form-check form-check-inline" v-for="datset in dataset_show.KnowledgeTracing"
                         :key="datset">
                         <input class="form-check-input" type="radio" name="datasetRadio" :id=datset :value=datset
@@ -108,24 +108,24 @@ export default {
 
   setup(props, context) {
     // ref 响应式，也是默认值
-    let selectedTask = ref("CognitiveDiagnosis");
+    let selectedTask = ref("Cognitive Diagnosis");
     let selectedDataset = ref("FrcSub");
     // 维护: 依据任务需求在此处进行数据集重选择
     const dataset_show = reactive({
-      CognitiveDiagnosis: ['FrcSub', 'ASSISTment0910'],
-      KnowledgeTracing: ['ASSISTment0910']
+      "CognitiveDiagnosis": ['FrcSub', 'ASSISTment0910'],
+      "KnowledgeTracing": ['ASSISTment0910']
     });
     // 维护: 依据任务需求在此处进行应用场景选择, 如General、KnowledgeMissing
     const application_show = reactive({
-      CognitiveDiagnosis: ['General',],
-      KnowledgeTracing: ['General',]
+      "CognitiveDiagnosis": ['General',],
+      "KnowledgeTracing": ['General',]
     });
     // 监听器, 监听selectedTask的变化, 且在回调函数中根据selectedTask的值来更新selectedDataset的值
     watch(selectedTask, (newValue) => {
-      if (newValue == "CognitiveDiagnosis") {
+      if (newValue == "Cognitive Diagnosis") {
         selectedDataset.value = "";
       }
-      else if (newValue == "KnowledgeTracing") {
+      else if (newValue == "Knowledge Tracing") {
         selectedDataset.value = "";
       }
     });

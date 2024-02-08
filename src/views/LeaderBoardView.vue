@@ -142,7 +142,7 @@ export default {
       task: "None",
       dataset: "None",
       application: "None",
-      taskID: { CognitiveDiagnosis: 1, KnowledgeTracing: 2 },
+      taskID: { "Cognitive Diagnosis": 1, "Knowledge Tracing": 2 },
       datasetID: { FrcSub: 1, ASSISTment0910: 2, Junyi: 3 },
       applicationID: { General: 1, KnowledgeMissing: 2 },
     })

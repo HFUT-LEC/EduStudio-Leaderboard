@@ -39,6 +39,7 @@ def log2json():
     applicationInfo = {
         # 有待确认
         'GeneralModels': ['KaNCD', 'CDMFKC', 'DINA',  'NCDM',  'MIRT', 'KSCD', 'IRT',
+                          'MF', 'MGCD', 'CDGK_MULTI',
                           'DKT_plus', 'SAKT',  'SKVMN',  'KQN', 'DKT', 'RKT', 'IEKT',
                           'SAINT_plus', 'QIKT', 'SAINT', 'SimpleKT'
                           ]

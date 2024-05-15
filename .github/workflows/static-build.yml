@@ -3,7 +3,8 @@ name: Build static site
 on:
   push:
     branches:
-      - frontend 
+      - frontend
+      - backend
   workflow_dispatch:
 
 jobs:

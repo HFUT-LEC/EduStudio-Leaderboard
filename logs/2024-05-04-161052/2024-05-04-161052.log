@@ -1,0 +1,130 @@
+2024-05-04 16:10:52[INFO]: ============================================================
+2024-05-04 16:10:52[INFO]: [ID]: 2024-05-04-161052
+2024-05-04 16:10:52[INFO]: [DATASET]: FrcSub
+2024-05-04 16:10:52[INFO]: [ARGV]: ['.\\run_mf_demo.py']
+2024-05-04 16:10:52[INFO]: [ALL_CFG]: 
+{
+    "traintpl_cfg": {
+        "cls": "GeneralTrainTPL",
+        "num_stop_rounds": 10,
+        "early_stop_metrics": [
+            [
+                "auc",
+                "max"
+            ]
+        ],
+        "best_epoch_metric": "auc",
+        "unsave_best_epoch_pth": true,
+        "ignore_metrics_in_train": [],
+        "batch_size": 32,
+        "eval_batch_size": 32,
+        "device": "cuda:0",
+        "epoch_num": 100,
+        "num_workers": 0,
+        "lr": 0.01,
+        "optim": "adam",
+        "eps": 1e-08,
+        "weight_decay": 0.0,
+        "seed": 2023
+    },
+    "datatpl_cfg": {
+        "cls": "CDInterDataTPL",
+        "mid2cache_op_seq": [
+            "M2C_Label2Int",
+            "M2C_FilterRecords4CD",
+            "M2C_ReMapId",
+            "M2C_RandomDataSplit4CD"
+        ],
+        "seperator": ",",
+        "n_folds": 1,
+        "is_dataset_divided": false,
+        "is_save_cache": false,
+        "cache_id": "cache_default",
+        "load_data_from": "middata",
+        "inter_exclude_feat_names": [],
+        "raw2mid_op": "None",
+        "seed": 2023,
+        "M2C_Label2Int": {},
+        "M2C_FilterRecords4CD": {
+            "stu_least_records": 10,
+            "exer_least_records": 0
+        },
+        "M2C_ReMapId": {
+            "share_id_columns": [],
+            "ignore_columns": "{'order_id:token'}"
+        },
+        "M2C_RandomDataSplit4CD": {
+            "seed": 2023,
+            "divide_scale_list": [
+                7,
+                1,
+                2
+            ]
+        }
+    },
+    "modeltpl_cfg": {
+        "cls": "MF",
+        "param_init_type": "xavier_normal",
+        "pretrained_file_path": ""
+    },
+    "evaltpl_cfg": {
+        "clses": [
+            "PredictionEvalTPL"
+        ],
+        "PredictionEvalTPL": {
+            "use_metrics": [
+                "auc",
+                "acc",
+                "rmse"
+            ]
+        }
+    },
+    "frame_cfg": {
+        "ARCHIVE_FOLDER_PATH": "E:\\MyCode\\python_code\\EduStudio\\examples\\single_model\\archive",
+        "CFG_FOLDER_PATH": "E:\\MyCode\\python_code\\EduStudio\\examples\\single_model\\conf",
+        "DATA_FOLDER_PATH": "E:\\MyCode\\python_code\\EduStudio\\examples\\single_model\\data",
+        "DISABLE_LOG_STDOUT": false,
+        "DISABLE_TQDM_BAR": false,
+        "DT_INFO_DICT": {},
+        "DT_INFO_FILE_PATH": "E:\\MyCode\\python_code\\EduStudio\\edustudio\\assets\\datasets.yaml",
+        "EDUSTUDIO_VERSION": "v1.1.1",
+        "ID": "2024-05-04-161052",
+        "LOG_WITHOUT_DATE": false,
+        "TEMP_FOLDER_PATH": "E:\\MyCode\\python_code\\EduStudio\\examples\\single_model\\temp",
+        "TQDM_NCOLS": 100,
+        "WORK_DIR": "E:\\MyCode\\python_code\\EduStudio\\examples\\single_model",
+        "data_folder_path": "E:\\MyCode\\python_code\\EduStudio\\examples\\single_model\\data/FrcSub",
+        "temp_folder_path": "E:\\MyCode\\python_code\\EduStudio\\examples\\single_model\\temp/FrcSub/GeneralTrainTPL/MF/2024-05-04-161052",
+        "archive_folder_path": "E:\\MyCode\\python_code\\EduStudio\\examples\\single_model\\archive/FrcSub/GeneralTrainTPL/MF"
+    },
+    "dataset": "FrcSub",
+    "logger": "<Logger edustudio (DEBUG)>"
+}
+2024-05-04 16:10:52[INFO]: ============================================================
+2024-05-04 16:10:52[INFO]: {'stu_count': 536, 'exer_count': 20}
+2024-05-04 16:10:52[INFO]: TrainTPL <class 'edustudio.traintpl.general_traintpl.GeneralTrainTPL'> Started!
+2024-05-04 16:10:54[INFO]: ====== [FOLD ID]: 0 ======
+2024-05-04 16:10:55[INFO]: [CALLBACK]-ModelCheckPoint has been registered!
+2024-05-04 16:10:55[INFO]: [CALLBACK]-EarlyStopping has been registered!
+2024-05-04 16:10:55[INFO]: [CALLBACK]-History has been registered!
+2024-05-04 16:10:55[INFO]: [CALLBACK]-BaseLogger has been registered!
+2024-05-04 16:10:55[INFO]: Start Training...
+2024-05-04 16:10:55[ERROR]: Traceback (most recent call last):
+  File "E:\MyCode\python_code\EduStudio\examples\single_model/../..\edustudio\quickstart\quickstart.py", line 58, in run_edustudio
+    traintpl.start()
+  File "E:\MyCode\python_code\EduStudio\examples\single_model/../..\edustudio\traintpl\gd_traintpl.py", line 79, in start
+    metrics = self.one_fold_start(fold_id)
+  File "E:\MyCode\python_code\EduStudio\examples\single_model/../..\edustudio\traintpl\general_traintpl.py", line 53, in one_fold_start
+    self.fit(train_loader=self.train_loader, valid_loader=self.valid_loader)
+  File "E:\MyCode\python_code\EduStudio\examples\single_model/../..\edustudio\traintpl\general_traintpl.py", line 99, in fit
+    loss.backward()
+  File "C:\Users\xiaoyu\.conda\envs\pytorch\lib\site-packages\torch\_tensor.py", line 522, in backward
+    torch.autograd.backward(
+  File "C:\Users\xiaoyu\.conda\envs\pytorch\lib\site-packages\torch\autograd\__init__.py", line 266, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+RuntimeError: CUDA error: device-side assert triggered
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1.
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+

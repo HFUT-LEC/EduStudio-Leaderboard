@@ -99,9 +99,14 @@
         "Publish": "NeurIPS",
         "Year": "2015"
     },
-    "MF":{
+    "MF": {
         "paper_url": "https://ieeexplore.ieee.org/abstract/document/5197422",
         "Publish": "Computer",
         "Year": "2009"
+    },
+    "DeepIRT": {
+        "paper_url": "https://arxiv.org/abs/1904.11738",
+        "Publish": "EDM",
+        "Year": "2019"
     }
 }

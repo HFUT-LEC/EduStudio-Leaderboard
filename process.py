@@ -33,7 +33,7 @@ def log2json():
     taskInfo = {
         'CDModels': ['KaNCD', 'CDMFKC', 'DINA', 'NCDM',  'MIRT', 'KSCD', 'IRT', 'MF', 'MGCD', 'CDGK_MULTI'],
         'KTModels': ['DKT_plus', 'SAKT',  'SKVMN',  'KQN' , 'DKT', 'RKT', 'IEKT', 'SAINT_plus',
-                      'QIKT', 'SAINT', 'SimpleKT']
+                      'QIKT', 'SAINT', 'SimpleKT', 'DeepIRT']
     }
     datasetInfo = {'FrcSub': 1, 'ASSIST_0910': 2}
     applicationInfo = {
@@ -41,7 +41,7 @@ def log2json():
         'GeneralModels': ['KaNCD', 'CDMFKC', 'DINA',  'NCDM',  'MIRT', 'KSCD', 'IRT',
                           'MF', 'MGCD', 'CDGK_MULTI',
                           'DKT_plus', 'SAKT',  'SKVMN',  'KQN', 'DKT', 'RKT', 'IEKT',
-                          'SAINT_plus', 'QIKT', 'SAINT', 'SimpleKT'
+                          'SAINT_plus', 'QIKT', 'SAINT', 'SimpleKT', 'DeepIRT'
                           ]
     }
     model_set = taskInfo['CDModels'] + taskInfo['KTModels']
